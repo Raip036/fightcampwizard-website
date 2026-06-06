@@ -3,6 +3,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import PhoneMockup from "@/components/ui/PhoneMockup";
 import { SCREENS } from "@/lib/constants";
 import Reveal from "@/components/ui/Reveal";
+import WizardChatScreen from "@/components/showcase-screens/WizardChatScreen";
+import FightWeekScreen from "@/components/showcase-screens/FightWeekScreen";
+
+// Tabs without a screenshot render a live in-app mockup instead.
+const SCREEN_NODES: Partial<Record<string, React.ReactNode>> = {
+  wizardChat: <WizardChatScreen />,
+  fightWeek: <FightWeekScreen />,
+};
 
 // ── Feature-sync config: order the tabs + give each a caption. ───────────────
 const TABS = [
@@ -206,7 +214,9 @@ export default function Showcase() {
                     src={screen.src}
                     label={screen.label}
                     widthClass="w-[clamp(220px,72vw,300px)]"
-                  />
+                  >
+                    {SCREEN_NODES[current.key]}
+                  </PhoneMockup>
                 </motion.div>
               </AnimatePresence>
             </div>

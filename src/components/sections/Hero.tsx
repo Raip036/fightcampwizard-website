@@ -80,7 +80,29 @@ export default function Hero() {
               <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-ink-muted/70 sm:inline">
                 or
               </span>
-              <AppStoreButton size="md" className="w-full sm:w-auto" />
+              <AppStoreButton size="md" className="flex-1 sm:w-auto sm:flex-none" />
+              <a
+                href="https://www.instagram.com/fightcampwizard/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow FightCamp Wizard on Instagram"
+                className="group inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-400/60 hover:bg-white/[0.08] hover:text-white"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-6 w-6 transition-transform duration-200 group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.9"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="1.15" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
             </div>
           </motion.div>
 

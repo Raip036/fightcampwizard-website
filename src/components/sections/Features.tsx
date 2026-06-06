@@ -58,21 +58,32 @@ type Tile = {
 };
 
 const TILES: Tile[] = [
+  // Row 1 — two rich, taller cards share a half-width each (matching heights).
   {
     key: "plan",
     title: "AI Cut Plans",
     desc: "Personalised, day-by-day plans mapped to your exact fight date, so every kilo lands on schedule.",
     icon: "plan",
-    span: "lg:col-span-2 lg:row-span-2",
+    span: "lg:col-span-3",
     tint: "bg-brand-grad text-white",
     iconColor: "text-white",
   },
+  {
+    key: "insights",
+    title: "Macro & Recovery Insights",
+    desc: "AI insights drawn from your own data, macros, recovery and readiness in one view.",
+    icon: "insights",
+    span: "lg:col-span-3",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
+  },
+  // Rows 2-3 — six compact cards in equal thirds (matching heights).
   {
     key: "scan",
     title: "AI Meal Scan",
     desc: "Snap a photo of any meal and get instant calories & macros.",
     icon: "scan",
-    span: "lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -81,7 +92,7 @@ const TILES: Tile[] = [
     title: "Smart Weight Tracking",
     desc: "Weight trends, projections and a will-you-make-weight forecast.",
     icon: "weight",
-    span: "lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -90,7 +101,7 @@ const TILES: Tile[] = [
     title: "Fight-Week Mode",
     desc: "Water loading, sodium & carb manipulation, sweat protocol, guided and safe.",
     icon: "fightweek",
-    span: "lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -99,7 +110,7 @@ const TILES: Tile[] = [
     title: "Rehydration Protocol",
     desc: "Science-based recovery after weigh-in so you perform on fight night.",
     icon: "rehydrate",
-    span: "lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -108,16 +119,7 @@ const TILES: Tile[] = [
     title: "24/7 Wizard Coach",
     desc: "Ask anything, get instant expert answers.",
     icon: "coach",
-    span: "lg:row-span-2",
-    tint: "bg-surface border border-white/[0.07] text-ink",
-    iconColor: "text-accent",
-  },
-  {
-    key: "insights",
-    title: "Macro & Recovery Insights",
-    desc: "AI insights drawn from your own data.",
-    icon: "insights",
-    span: "lg:col-span-2 lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -126,7 +128,7 @@ const TILES: Tile[] = [
     title: "Safety First",
     desc: "Built-in guardrails so you never cut dangerously.",
     icon: "safety",
-    span: "lg:row-span-2",
+    span: "lg:col-span-2",
     tint: "bg-surface border border-white/[0.07] text-ink",
     iconColor: "text-accent",
   },
@@ -181,7 +183,7 @@ function WeightCard() {
   const line = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x} ${p.y}`).join(" ");
   const area = `${line} L116 64 L4 64 Z`;
   return (
-    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+    <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-baseline gap-2">
         <span className="font-display text-xl font-bold tabular-nums text-ink sm:text-2xl">76.4</span>
         <span className="text-xs font-medium text-ink-muted">kg today</span>
@@ -227,7 +229,7 @@ function FightWeekCard() {
     { day: "Sat", task: "Weigh-in", done: false },
   ];
   return (
-    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+    <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Fight week</span>
         <span className="rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
@@ -265,7 +267,7 @@ function RehydrateCard() {
     { t: "+3h", task: "Full meal + rehydrate", bar: "w-full", c: "bg-brand-600" },
   ];
   return (
-    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+    <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Recovery plan</span>
         <span className="ml-auto rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
@@ -292,7 +294,7 @@ function RehydrateCard() {
 /* ── Wizard chatbot card (24/7 Wizard Coach) ─────────────────────────────── */
 function CoachCard() {
   return (
-    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+    <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="space-y-2">
         <div className="flex justify-end">
           <span className="max-w-[80%] rounded-2xl rounded-br-md bg-brand-500 px-3 py-1.5 text-[11px] font-medium leading-snug text-night">
@@ -353,14 +355,14 @@ function RecoveryRing() {
 /* ── Macro + Recovery insights card (two stacked mini cards) ─────────────── */
 function InsightsCard() {
   return (
-    <div className="mt-5 grid w-full gap-3 sm:grid-cols-2">
+    <div className="mt-auto grid w-full gap-3 sm:grid-cols-2">
       {/* analysed diet → vitamin breakdown (how the feature actually works) */}
-      <div className="rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
+        <div className="flex items-center justify-between gap-2 whitespace-nowrap">
           <span className="font-display text-xs font-bold text-ink">Analysed diet</span>
-          <span className="text-[10px] font-medium text-ink-faint">% daily target</span>
+          <span className="text-[10px] font-medium text-ink-faint">% of target</span>
         </div>
-        <div className="mt-2 space-y-1.5">
+        <div className="mt-2.5 space-y-2">
           {[
             { l: "Vitamin D", pct: 35, low: true },
             { l: "Vitamin B12", pct: 92, low: false },
@@ -368,13 +370,13 @@ function InsightsCard() {
             { l: "Vitamin C", pct: 100, low: false },
           ].map((v) => (
             <div key={v.l}>
-              <div className="flex items-center justify-between text-[11px] font-medium">
+              <div className="flex items-center justify-between gap-2 whitespace-nowrap text-[11px] font-medium">
                 <span className="text-ink-muted">{v.l}</span>
-                <span className={`font-semibold ${v.low ? "text-warn" : "text-ink"}`}>
+                <span className={`font-semibold tabular ${v.low ? "text-warn" : "text-ink"}`}>
                   {v.pct}%
                 </span>
               </div>
-              <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+              <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
                 <div
                   className={`h-full rounded-full ${v.low ? "bg-warn" : "bg-accent"}`}
                   style={{ width: `${v.pct}%` }}
@@ -383,29 +385,30 @@ function InsightsCard() {
             </div>
           ))}
         </div>
-        <div className="mt-2 rounded-2xl bg-warn/10 px-2.5 py-1.5 text-[11px] font-semibold text-ink">
-          Vitamin D's low, add eggs & sunlight.
+        <div className="mt-3 rounded-2xl bg-warn/10 px-2.5 py-2 text-[11px] font-semibold leading-snug text-ink">
+          Vitamin D's low — add eggs &amp; sunlight.
         </div>
       </div>
 
       {/* recovery page */}
-      <div className="rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
+      <div className="flex flex-col rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
         <span className="font-display text-xs font-bold text-ink">Recovery</span>
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-3 flex items-center gap-4">
           <RecoveryRing />
-          <div className="min-w-0 space-y-1.5 text-[11px] font-medium">
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-ink-muted">Sleep</span>
-              <span className="font-semibold text-ink">7h 42m</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-ink-muted">HRV</span>
-              <span className="font-semibold text-ink">68 ms</span>
-            </div>
-            <div className="flex items-center justify-between gap-2">
-              <span className="text-ink-muted">Resting HR</span>
-              <span className="font-semibold text-ink">51 bpm</span>
-            </div>
+          <div className="min-w-0 flex-1 space-y-2.5 text-xs font-medium">
+            {[
+              { l: "Sleep", v: "7h 42m" },
+              { l: "HRV", v: "68 ms" },
+              { l: "Resting HR", v: "51 bpm" },
+            ].map((s) => (
+              <div
+                key={s.l}
+                className="flex items-center justify-between gap-3 whitespace-nowrap border-b border-white/[0.05] pb-2 last:border-0 last:pb-0"
+              >
+                <span className="text-ink-muted">{s.l}</span>
+                <span className="font-semibold tabular text-ink">{s.v}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -416,7 +419,7 @@ function InsightsCard() {
 /* ── Safe-cut guardrail card (Safety First) ──────────────────────────────── */
 function SafetyCard() {
   return (
-    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+    <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Safe cut zone</span>
         <span className="ml-auto rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
@@ -446,12 +449,12 @@ function SafetyCard() {
 function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
   const dark = tile.tint.includes("bg-brand-grad");
   return (
-    <Reveal delay={Math.min(idx * 0.06, 0.4)} className={`${tile.span} min-w-0`}>
+    <Reveal delay={Math.min(idx * 0.06, 0.4)} className={`${tile.span} h-full min-w-0`}>
       <motion.div
         whileHover={hover}
         whileTap={tap}
         transition={{ type: "spring", stiffness: 320, damping: 22 }}
-        className={`group relative flex min-w-0 flex-col gap-4 overflow-hidden rounded-4xl p-5 shadow-card sm:p-6 ${tile.tint} ${
+        className={`group relative flex h-full min-w-0 flex-col gap-4 overflow-hidden rounded-4xl p-5 shadow-card sm:p-6 ${tile.tint} ${
           dark ? "shadow-glow" : ""
         }`}
       >
@@ -490,7 +493,7 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
 
         {/* Meal-scan tile: rich mini visual */}
         {tile.key === "scan" && (
-          <div className="mt-5 flex items-center gap-3 rounded-3xl border border-white/[0.07] bg-surface-2 p-3">
+          <div className="mt-auto flex items-center gap-3 rounded-3xl border border-white/[0.07] bg-surface-2 p-3">
             <MacroRing />
             <div className="min-w-0 space-y-1.5 text-xs font-medium">
               {[
@@ -510,7 +513,7 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
 
         {/* large plan tile: realistic mock cut-plan card */}
         {tile.key === "plan" && (
-          <div className="relative z-10 mt-5 w-full max-w-sm rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
+          <div className="relative z-10 mt-auto w-full max-w-sm rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
             {/* card header */}
             <div className="flex items-center gap-2">
               <span className="font-display text-sm font-bold text-ink">Your cut plan</span>
@@ -575,7 +578,7 @@ export default function Features() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-6">
           {TILES.map((tile, idx) => (
             <TileCard key={tile.key} tile={tile} idx={idx} />
           ))}
