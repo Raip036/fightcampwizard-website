@@ -210,7 +210,7 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.8, y: 8 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="animate-float absolute left-0 top-[4%] z-30 max-w-[8.5rem] rounded-3xl rounded-tr-md bg-white px-3 py-2 text-left text-xs font-semibold text-[#0b1220] shadow-float sm:left-2 sm:top-[6%] sm:max-w-[13rem] sm:px-4 sm:py-3 sm:text-base"
+              className="animate-float text-balance absolute left-0 top-[4%] z-30 max-w-[8.5rem] rounded-3xl rounded-tr-md bg-white px-3.5 py-2.5 text-center text-xs font-semibold leading-snug text-[#0b1220] shadow-float sm:left-2 sm:top-[6%] sm:max-w-[13rem] sm:px-5 sm:py-3 sm:text-base"
             >
               Let&apos;s cut that weight, safely.
               {/* tail pointing toward the wizard on the right */}

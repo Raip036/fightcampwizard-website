@@ -97,7 +97,7 @@ export default function Navbar() {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-surface/70 xl:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center xl:hidden"
         >
           <div className="space-y-1.5">
             <span
