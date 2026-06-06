@@ -1,27 +1,98 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { WIZARD, APP_NAME } from "@/lib/constants";
 import Reveal from "@/components/ui/Reveal";
 import AppStoreButton from "@/components/ui/AppStoreButton";
 
+type ValueIcon = (props: { className?: string }) => JSX.Element;
+
+const ShieldIcon: ValueIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+    <path
+      d="M12 3l7 3v5c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6l7-3z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M9 12l2 2 4-4"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const FlaskIcon: ValueIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+    <path
+      d="M9 3h6M10 3v6l-5 9a1.5 1.5 0 001.3 2.3h11.4A1.5 1.5 0 0019 18l-5-9V3"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path d="M7.5 14h9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+  </svg>
+);
+
+const GloveIcon: ValueIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+    <path
+      d="M6 9a4 4 0 014-4h3a5 5 0 015 5v3a5 5 0 01-5 5H8a4 4 0 01-4-4V9z"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6 9c-1.1 0-2 .9-2 2v1c0 1.1.9 2 2 2"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+    <path d="M13 18v2H8v-2" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+  </svg>
+);
+
+const LockIcon: ValueIcon = ({ className }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className} aria-hidden>
+    <rect
+      x="5"
+      y="10"
+      width="14"
+      height="10"
+      rx="2"
+      stroke="currentColor"
+      strokeWidth="1.8"
+    />
+    <path
+      d="M8 10V7a4 4 0 018 0v3"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+    <circle cx="12" cy="15" r="1.4" fill="currentColor" />
+  </svg>
+);
+
 const VALUES = [
   {
-    emoji: "🛡️",
+    Icon: ShieldIcon,
     title: "Safety first",
     body: "Aggressive, reckless cuts hurt athletes. Every plan the Wizard builds is gradual, monitored and designed to protect your health and performance, never just the number on the scale.",
   },
   {
-    emoji: "🔬",
+    Icon: FlaskIcon,
     title: "Science-backed",
     body: "Hydration, sodium loading, carb manipulation and rehydration are grounded in sports-science research, not gym-bro folklore. We translate the evidence into steps you can actually follow.",
   },
   {
-    emoji: "🥊",
+    Icon: GloveIcon,
     title: "Athlete-obsessed",
     body: "Built with fighters, for fighters. Every feature answers a real fight-camp problem, from the first weigh-in countdown to the final water cut.",
   },
   {
-    emoji: "🔒",
+    Icon: LockIcon,
     title: "Privacy-first",
     body: "Your weight, your body, your data. We collect only what's needed to coach you, keep it secure, and never sell it. You stay in control.",
   },
@@ -31,12 +102,12 @@ export default function About() {
   return (
     <div className="overflow-x-hidden">
       {/* Hero intro */}
-      <section className="relative overflow-hidden bg-hero-grad pt-28 pb-16 sm:pt-36 sm:pb-24">
-        <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-30" />
+      <section className="relative overflow-hidden bg-night pt-28 pb-16 sm:pt-36 sm:pb-24">
+        <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-[0.05]" />
         <div className="container-px">
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
             <Reveal className="min-w-0">
-              <span className="eyebrow">Our story 🧙</span>
+              <span className="eyebrow">Our story</span>
               <h1 className="mt-5 font-display text-4xl font-extrabold leading-tight text-ink text-balance sm:text-5xl lg:text-6xl">
                 Smarter cuts for{" "}
                 <span className="text-gradient">every fighter</span>
@@ -53,21 +124,13 @@ export default function About() {
               <div className="relative mx-auto flex w-full max-w-md items-center justify-center">
                 <div
                   aria-hidden
-                  className="absolute inset-0 -z-10 mx-auto h-64 w-64 rounded-full bg-brand-400/40 blur-3xl sm:h-80 sm:w-80"
+                  className="absolute inset-0 -z-10 mx-auto h-64 w-64 rounded-full bg-brand-500/25 blur-3xl sm:h-80 sm:w-80"
                 />
                 <img
                   src={WIZARD.thoughtful}
                   alt="The FightCamp Wizard, thinking through a weight cut"
-                  className="w-56 animate-float-slow drop-shadow-2xl sm:w-72 lg:w-full"
+                  className="w-56 animate-float drop-shadow-2xl sm:w-72 lg:w-full"
                 />
-                <motion.span
-                  aria-hidden
-                  className="absolute -right-2 top-6 text-2xl sm:text-3xl"
-                  animate={{ y: [0, -10, 0], opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  ✨
-                </motion.span>
               </div>
             </Reveal>
           </div>
@@ -114,10 +177,14 @@ export default function About() {
       {/* Mission statement band */}
       <section className="container-px pb-16 sm:pb-24">
         <Reveal>
-          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-5xl bg-brand-grad px-6 py-14 text-center text-white shadow-glow sm:px-12 sm:py-20">
-            <div aria-hidden className="absolute inset-0 -z-10 bg-grid opacity-20" />
-            <span className="eyebrow text-white/80">Our mission</span>
-            <p className="mx-auto mt-5 max-w-3xl font-display text-2xl font-extrabold leading-snug text-balance sm:text-3xl lg:text-4xl">
+          <div className="relative mx-auto max-w-5xl overflow-hidden rounded-5xl border border-white/[0.07] bg-hero-grad px-6 py-14 text-center shadow-glow sm:px-12 sm:py-20">
+            <div aria-hidden className="bg-grid absolute inset-0 -z-10 opacity-[0.05]" />
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-0 -z-10 h-72 w-72 -translate-x-1/2 -translate-y-1/3 rounded-full bg-brand-500/25 blur-3xl"
+            />
+            <span className="eyebrow">Our mission</span>
+            <p className="mx-auto mt-5 max-w-3xl font-display text-2xl font-extrabold leading-snug text-ink text-balance sm:text-3xl lg:text-4xl">
               To make weight cutting safe, smart and accessible to every fighter
               on the planet, so you make weight with energy to spare.
             </p>
@@ -140,8 +207,10 @@ export default function About() {
           <div className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
-                <div className="glass-card h-full rounded-4xl p-6 sm:p-8">
-                  <span className="text-3xl sm:text-4xl">{v.emoji}</span>
+                <div className="h-full rounded-4xl border border-white/[0.07] bg-surface p-6 transition-colors hover:bg-surface-3 sm:p-8">
+                  <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-500/15 text-accent">
+                    <v.Icon className="h-6 w-6" />
+                  </span>
                   <h3 className="mt-4 font-display text-xl font-bold text-ink sm:text-2xl">
                     {v.title}
                   </h3>
@@ -158,7 +227,11 @@ export default function About() {
       {/* Closing CTA */}
       <section className="container-px pb-20 sm:pb-28">
         <Reveal>
-          <div className="mx-auto flex max-w-3xl flex-col items-center gap-7 rounded-5xl border border-brand-100 bg-white/60 px-6 py-12 text-center backdrop-blur-sm sm:px-12 sm:py-16">
+          <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-7 overflow-hidden rounded-5xl border border-white/[0.07] bg-surface px-6 py-12 text-center sm:px-12 sm:py-16">
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-0 -z-10 h-56 w-56 -translate-x-1/2 -translate-y-1/3 rounded-full bg-brand-500/20 blur-3xl"
+            />
             <img
               src={WIZARD.hero}
               alt=""

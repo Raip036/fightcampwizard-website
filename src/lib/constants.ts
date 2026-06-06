@@ -69,10 +69,10 @@ export const PRICING = {
     monthlyPrice: "£9.99",
     monthlyCadence: "/ month",
     // Annual billing — charged once a year, shown as a monthly equivalent.
-    yearlyTotal: "£49.99",
-    yearlyPerMonth: "£4.17",
-    yearlyCadence: "/ month, billed £49.99 annually",
-    savingsLabel: "Save 58%",
+    yearlyTotal: "£69.99",
+    yearlyPerMonth: "£5.83",
+    yearlyCadence: "/ month, billed £69.99 annually",
+    savingsLabel: "Save 42%",
     features: [
       "Unlimited AI coaching",
       "Personalised cut plans",

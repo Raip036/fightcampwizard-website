@@ -5,8 +5,8 @@ import AppStoreButton from "./ui/AppStoreButton";
 export default function Footer() {
   const year = 2026;
   return (
-    <footer className="relative overflow-hidden bg-ink text-white">
-      <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-600/30 blur-3xl" />
+    <footer className="relative overflow-hidden border-t border-white/[0.07] bg-surface-2 text-ink">
+      <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-brand-600/25 blur-3xl" />
       <div className="container-px relative grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <Link to="/" className="flex items-center gap-3">

@@ -24,7 +24,7 @@ const FAQS: QA[] = [
     a: (
       <>
         FightCamp Wizard is coming soon to the App Store. Join the{" "}
-        <a href="#waitlist" className="font-bold text-brand-600 underline">
+        <a href="#waitlist" className="font-bold text-accent underline hover:text-brand-300">
           waitlist
         </a>{" "}
         and we'll ping you the moment it lands so you can be first in the cage.
@@ -79,7 +79,7 @@ const FAQS: QA[] = [
       <>
         Privacy comes first. Your data is encrypted and never sold, and you stay
         in control of it. See our{" "}
-        <a href="/privacy" className="font-bold text-brand-600 underline">
+        <a href="/privacy" className="font-bold text-accent underline hover:text-brand-300">
           privacy policy
         </a>{" "}
         for the full details.
@@ -108,7 +108,7 @@ function FaqItem({
   onToggle: () => void;
 }) {
   return (
-    <div className="glass-card overflow-hidden">
+    <div className="overflow-hidden rounded-2xl border border-white/[0.07] bg-surface transition-colors hover:bg-surface-3">
       <button
         type="button"
         onClick={onToggle}
@@ -122,7 +122,7 @@ function FaqItem({
           aria-hidden
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-100 text-brand-600"
+          className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand-500/15 text-accent"
         >
           <svg viewBox="0 0 20 20" fill="none" className="h-4 w-4">
             <path
@@ -146,7 +146,7 @@ function FaqItem({
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="px-4 pb-5 text-sm leading-relaxed text-ink-muted text-pretty sm:px-6 sm:text-base">
+            <p className="px-4 pb-5 text-sm leading-relaxed text-ink text-pretty sm:px-6 sm:text-base">
               {item.a}
             </p>
           </motion.div>
@@ -160,9 +160,9 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="relative overflow-hidden bg-sand py-20 sm:py-28">
+    <section id="faq" className="relative overflow-hidden border-t border-white/[0.06] bg-night py-20 sm:py-28">
       <div
-        className="bg-grid pointer-events-none absolute inset-0 opacity-60"
+        className="bg-grid pointer-events-none absolute inset-0 opacity-[0.04]"
         aria-hidden
       />
       <div className="container-px relative">

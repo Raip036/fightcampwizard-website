@@ -8,43 +8,43 @@ import Reveal from "@/components/ui/Reveal";
 const TABS = [
   {
     key: "dashboard" as const,
-    accent: "text-brand-600",
-    dot: "bg-brand-500",
+    accent: "text-accent",
+    dot: "bg-accent",
     caption:
       "Your whole cut at a glance, weight trend, days to weigh-in, hydration and today's plan in one calm dashboard.",
   },
   {
     key: "cutPlan" as const,
-    accent: "text-grape",
-    dot: "bg-grape",
+    accent: "text-accent",
+    dot: "bg-brand-400",
     caption:
       "A day-by-day cut plan built around your fight date, walk-around weight and how your body actually responds.",
   },
   {
     key: "nutrition" as const,
-    accent: "text-mint",
-    dot: "bg-mint",
+    accent: "text-accent",
+    dot: "bg-brand-500",
     caption:
       "Snap a photo of your meal and let the Wizard log calories and macros, no tedious manual entry.",
   },
   {
     key: "weighIn" as const,
-    accent: "text-sun",
-    dot: "bg-sun",
+    accent: "text-accent",
+    dot: "bg-brand-300",
     caption:
       "Log every weigh-in, track water cuts and see exactly how close you are to making weight in real time.",
   },
   {
     key: "wizardChat" as const,
-    accent: "text-brand-500",
+    accent: "text-accent",
     dot: "bg-brand-400",
     caption:
       "Ask anything, any hour. Your AI cornerman answers cut, fuel and recovery questions like a coach in your pocket.",
   },
   {
     key: "fightWeek" as const,
-    accent: "text-flame",
-    dot: "bg-flame",
+    accent: "text-accent",
+    dot: "bg-brand-500",
     caption:
       "Fight-week mode flips on water loading, sodium timing and the rehydration protocol to peak you on the day.",
   },
@@ -79,29 +79,24 @@ export default function Showcase() {
   return (
     <section
       id="showcase"
-      className="relative overflow-hidden py-20 sm:py-28"
+      className="relative overflow-hidden bg-night py-20 sm:py-28"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Background: soft gradient + grid + floating blobs */}
-      <div className="absolute inset-0 -z-10 bg-sky-grad" />
-      <div className="absolute inset-0 -z-10 bg-grid opacity-[0.5]" />
-      <div className="pointer-events-none absolute -left-24 top-10 -z-10 h-72 w-72 rounded-full bg-brand-200/40 blur-3xl" />
-      <div className="pointer-events-none absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-grape/15 blur-3xl" />
-      <div className="animate-float-slow pointer-events-none absolute right-[12%] top-24 -z-10 hidden h-16 w-16 rounded-3xl bg-sun/30 blur-md md:block" />
-      <div className="animate-float pointer-events-none absolute left-[8%] bottom-24 -z-10 hidden h-12 w-12 rounded-full bg-mint/30 blur-md md:block" />
+      {/* Background: dark base + subtle grid + ambient brand glows */}
+      <div className="absolute inset-0 -z-10 bg-grid opacity-[0.4]" />
+      <div className="pointer-events-none absolute -left-24 top-10 -z-10 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 bottom-0 -z-10 h-80 w-80 rounded-full bg-brand-500/20 blur-3xl" />
 
       <div className="container-px mx-auto max-w-6xl">
         {/* Heading */}
         <Reveal className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Take a look inside</p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 font-display text-3xl font-extrabold uppercase tracking-tight text-ink sm:text-4xl md:text-5xl">
             Beautiful. Powerful.{" "}
-            <span className="bg-gradient-to-r from-white to-brand-100 bg-clip-text text-transparent">
-              In your corner.
-            </span>
+            <span className="text-accent">In your corner.</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-balance text-base text-white/85 sm:text-lg">
+          <p className="mx-auto mt-4 max-w-xl text-balance text-base text-ink-muted sm:text-lg">
             This is the real app experience, every screen designed to make a brutal
             weight cut feel calm, clear and totally in control.
           </p>
@@ -120,7 +115,7 @@ export default function Showcase() {
                   className={`shrink-0 rounded-full border px-4 py-2.5 text-sm font-semibold transition-colors ${
                     i === active
                       ? "border-transparent bg-brand-600 text-white shadow-glow"
-                      : "border-ink/10 bg-white/70 text-ink-soft hover:text-ink"
+                      : "border-white/12 bg-surface text-ink-muted hover:text-ink"
                   }`}
                 >
                   {SCREENS[t.key].label}
@@ -138,8 +133,8 @@ export default function Showcase() {
                       onClick={() => select(i)}
                       className={`group relative w-full overflow-hidden rounded-2xl border px-5 py-4 text-left transition-all ${
                         isActive
-                          ? "border-brand-200 bg-white shadow-card"
-                          : "border-transparent bg-white/40 hover:bg-white/70"
+                          ? "border-white/12 bg-surface-2 shadow-card"
+                          : "border-transparent bg-surface/40 hover:bg-surface"
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -149,7 +144,7 @@ export default function Showcase() {
                           }`}
                         />
                         <span
-                          className={`font-display text-lg font-bold ${
+                          className={`font-display text-lg font-bold uppercase ${
                             isActive ? "text-ink" : "text-ink-muted group-hover:text-ink-soft"
                           }`}
                         >
@@ -163,7 +158,7 @@ export default function Showcase() {
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="overflow-hidden text-sm leading-relaxed text-ink-soft"
+                            className="overflow-hidden text-sm leading-relaxed text-ink-muted"
                           >
                             <span className="mt-2 block pl-[1.4rem]">{t.caption}</span>
                           </motion.p>
@@ -173,7 +168,7 @@ export default function Showcase() {
                       {isActive && !paused && (
                         <motion.span
                           key={`bar-${active}`}
-                          className="absolute bottom-0 left-0 h-0.5 bg-brand-500"
+                          className="absolute bottom-0 left-0 h-0.5 bg-accent"
                           initial={{ width: "0%" }}
                           animate={{ width: "100%" }}
                           transition={{ duration: AUTO_MS / 1000, ease: "linear" }}
@@ -190,7 +185,7 @@ export default function Showcase() {
           <Reveal delay={0.15} className="order-1 flex min-w-0 flex-col items-center lg:order-2">
             <div className="relative flex w-full max-w-full items-center justify-center">
               {/* glow behind phone */}
-              <div className="pointer-events-none absolute h-[80%] w-[70%] rounded-full bg-brand-300/30 blur-3xl" />
+              <div className="pointer-events-none absolute h-[80%] w-[70%] rounded-full bg-brand-500/20 blur-3xl" />
 
               <AnimatePresence mode="wait" custom={dir}>
                 <motion.div
@@ -226,10 +221,10 @@ export default function Showcase() {
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className={`font-display text-xl font-bold ${current.accent}`}>
+                  <h3 className={`font-display text-xl font-bold uppercase ${current.accent}`}>
                     {screen.label}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">
+                  <p className="mt-2 text-sm leading-relaxed text-ink-muted">
                     {current.caption}
                   </p>
                 </motion.div>
@@ -247,7 +242,7 @@ export default function Showcase() {
                 >
                   <span
                     className={`block rounded-full transition-all ${
-                      i === active ? "h-2.5 w-6 bg-brand-600" : "h-2.5 w-2.5 bg-ink/20"
+                      i === active ? "h-2.5 w-6 bg-accent" : "h-2.5 w-2.5 bg-white/20"
                     }`}
                   />
                 </button>

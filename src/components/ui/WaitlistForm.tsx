@@ -18,7 +18,10 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
  * delivery. Without a key it still confirms locally so the UI is testable.
  */
 export default function WaitlistForm({
-  variant = "light",
+  // `variant` is retained as part of the public API. In the all-dark Cornerman
+  // design system both variants render identically (everything lives on a dark
+  // surface), so the value no longer branches the styling.
+  variant: _variant = "light",
   className = "",
   anchor = false,
 }: Props) {
@@ -28,8 +31,6 @@ export default function WaitlistForm({
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
-
-  const dark = variant === "dark";
 
   const validate = (value: string): string | null => {
     const trimmed = value.trim();
@@ -99,30 +100,24 @@ export default function WaitlistForm({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             aria-live="polite"
-            className={`flex items-start gap-3 rounded-2xl px-5 py-4 ${
-              dark
-                ? "bg-white/15 text-white ring-1 ring-white/20"
-                : "bg-brand-50 text-brand-800 ring-1 ring-brand-200"
-            }`}
+            className="flex items-start gap-3 rounded-2xl bg-white/[0.04] px-5 py-4 text-ink ring-1 ring-white/10"
           >
             <motion.span
               initial={{ scale: 0, rotate: -20 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 320, damping: 14 }}
-              className="text-2xl leading-none"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-success/20 text-success"
               aria-hidden
             >
-              🎉
+              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="m5 13 4 4L19 7" />
+              </svg>
             </motion.span>
             <span>
-              <span className="block font-display font-bold leading-tight">
+              <span className="block font-display font-bold leading-tight text-ink">
                 You're on the list!
               </span>
-              <span
-                className={`mt-0.5 block text-sm ${
-                  dark ? "text-white/80" : "text-brand-700/80"
-                }`}
-              >
+              <span className="mt-0.5 block text-sm text-ink-soft">
                 We'll ping you the moment the Wizard lands. Keep an eye on your inbox.
               </span>
             </span>
@@ -162,14 +157,10 @@ export default function WaitlistForm({
               aria-label="Email address"
               aria-invalid={error ? true : undefined}
               aria-describedby={error ? "waitlist-error" : "waitlist-help"}
-              className={`h-14 min-h-[44px] flex-1 rounded-2xl border-2 px-5 font-medium outline-none transition-colors disabled:opacity-60 ${
+              className={`h-14 min-h-[44px] flex-1 rounded-2xl border px-5 font-medium text-ink placeholder:text-ink-faint outline-none transition-colors disabled:opacity-60 ${
                 error
-                  ? dark
-                    ? "border-flame/80 bg-white/10 text-white placeholder:text-white/50 focus:border-flame"
-                    : "border-flame/70 bg-white text-ink placeholder:text-ink-muted focus:border-flame"
-                  : dark
-                    ? "border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-white/60"
-                    : "border-ink/10 bg-white text-ink placeholder:text-ink-muted focus:border-brand-400"
+                  ? "border-danger bg-white/[0.04] focus:border-danger"
+                  : "border-white/15 bg-white/[0.04] focus:border-brand-400"
               }`}
             />
             <button
@@ -206,11 +197,13 @@ export default function WaitlistForm({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
             transition={{ duration: 0.2 }}
-            className={`mt-2 flex items-start gap-1.5 text-xs font-medium ${
-              dark ? "text-flame" : "text-flame"
-            }`}
+            className="mt-2 flex items-start gap-1.5 text-xs font-medium text-danger"
           >
-            <span aria-hidden>⚠️</span>
+            <svg viewBox="0 0 24 24" className="mt-px h-3.5 w-3.5 shrink-0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+              <path d="M12 9v4" />
+              <path d="M12 17h.01" />
+            </svg>
             {error}
           </motion.p>
         )}
@@ -220,9 +213,7 @@ export default function WaitlistForm({
       {!done && !error && (
         <p
           id="waitlist-help"
-          className={`mt-2.5 text-center text-xs sm:text-left ${
-            dark ? "text-white/60" : "text-ink-muted"
-          }`}
+          className="mt-2.5 text-center text-xs text-ink-muted sm:text-left"
         >
           Be first in line when FightCamp Wizard hits the App Store. No spam, ever.
         </p>

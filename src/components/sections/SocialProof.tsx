@@ -3,12 +3,12 @@ import { motion, useInView } from "framer-motion";
 import Reveal from "@/components/ui/Reveal";
 
 const DISCIPLINES = [
-  { label: "MMA", icon: "🥊" },
-  { label: "Boxing", icon: "🥊" },
-  { label: "BJJ", icon: "🥋" },
-  { label: "Wrestling", icon: "🤼" },
-  { label: "Muay Thai", icon: "🦵" },
-  { label: "Judo", icon: "🥋" },
+  { label: "MMA" },
+  { label: "Boxing" },
+  { label: "BJJ" },
+  { label: "Wrestling" },
+  { label: "Muay Thai" },
+  { label: "Judo" },
 ];
 
 interface Stat {
@@ -59,16 +59,16 @@ function CountUp({ value, decimals = 0, prefix = "", suffix = "" }: Stat) {
 }
 
 const TRUST_AVATARS = [
-  { label: "JT", color: "bg-brand-600" },
-  { label: "MK", color: "bg-flame" },
-  { label: "AS", color: "bg-grape" },
-  { label: "RD", color: "bg-mint" },
-  { label: "CL", color: "bg-sun" },
+  { label: "JT", color: "bg-gradient-to-br from-brand-400 to-brand-600" },
+  { label: "MK", color: "bg-gradient-to-br from-brand-500 to-brand-700" },
+  { label: "AS", color: "bg-gradient-to-br from-brand-300 to-brand-500" },
+  { label: "RD", color: "bg-gradient-to-br from-gold to-gold-light" },
+  { label: "CL", color: "bg-gradient-to-br from-brand-600 to-brand-800" },
 ];
 
 export default function SocialProof() {
   return (
-    <section className="relative border-y border-ink/5 bg-white py-14 sm:py-20">
+    <section className="relative border-y border-white/[0.07] bg-night py-14 sm:py-20">
       <div className="container-px">
         <Reveal className="text-center">
           {/* avatar stack + rating trust row */}
@@ -77,7 +77,7 @@ export default function SocialProof() {
               {TRUST_AVATARS.map((a) => (
                 <span
                   key={a.label}
-                  className={`flex h-9 w-9 items-center justify-center rounded-full ${a.color} font-display text-xs font-bold text-white shadow-soft ring-2 ring-white`}
+                  className={`flex h-9 w-9 items-center justify-center rounded-full ${a.color} font-display text-xs font-bold text-ink shadow-card ring-2 ring-night`}
                   aria-hidden
                 >
                   {a.label}
@@ -86,7 +86,7 @@ export default function SocialProof() {
             </div>
             <div className="flex items-center gap-2">
               <span
-                className="flex items-center gap-0.5 text-sun"
+                className="flex items-center gap-0.5 text-gold"
                 role="img"
                 aria-label="Rated 4.9 out of 5 stars"
               >
@@ -102,7 +102,7 @@ export default function SocialProof() {
             </div>
           </div>
 
-          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.25em] text-ink-muted sm:text-sm">
+          <p className="eyebrow mt-6">
             Trusted by athletes across every discipline
           </p>
 
@@ -111,9 +111,8 @@ export default function SocialProof() {
             {DISCIPLINES.map((d) => (
               <span
                 key={d.label}
-                className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-sand/60 px-4 py-2 text-sm font-semibold text-ink-soft shadow-soft transition-colors hover:border-brand-300 hover:text-brand-600 sm:text-base"
+                className="inline-flex items-center rounded-full border border-white/15 bg-white/[0.06] px-4 py-2 font-mono text-sm font-medium text-ink transition-colors hover:border-accent/40 hover:text-accent sm:text-base"
               >
-                <span aria-hidden>{d.icon}</span>
                 {d.label}
               </span>
             ))}
@@ -132,10 +131,14 @@ export default function SocialProof() {
                 transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="glass-card flex flex-col items-center justify-center rounded-4xl px-3 py-6 text-center sm:px-5 sm:py-8"
               >
-                <span className="font-display text-3xl font-extrabold leading-none text-gradient sm:text-4xl lg:text-5xl">
+                <span
+                  className={`font-display text-3xl font-extrabold leading-none sm:text-4xl lg:text-5xl ${
+                    i === 2 ? "text-gradient" : "text-ink"
+                  }`}
+                >
                   <CountUp {...stat} />
                 </span>
-                <span className="mt-2 text-xs font-medium uppercase tracking-wide text-ink-muted sm:text-sm">
+                <span className="mt-2 font-mono text-xs uppercase tracking-wide text-ink-faint sm:text-sm">
                   {stat.label}
                 </span>
               </motion.div>
@@ -143,7 +146,7 @@ export default function SocialProof() {
           </div>
 
           {/* disclaimer */}
-          <p className="mx-auto mt-6 max-w-xl text-balance text-center text-[11px] leading-relaxed text-ink-muted/80 sm:text-xs">
+          <p className="mx-auto mt-6 max-w-xl text-balance text-center text-[11px] leading-relaxed text-ink-faint sm:text-xs">
             *Figures based on results reported by FightCamp Wizard beta testers.
             Individual results vary; weight cutting carries risks, always cut
             responsibly under professional guidance.

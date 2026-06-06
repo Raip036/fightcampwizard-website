@@ -1,0 +1,6 @@
+{"type":"server-started","port":63444,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:63444","screen_dir":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/content","state_dir":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/state"}
+{"type":"screen-added","file":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/content/design-directions.html"}
+{"type":"screen-added","file":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/content/dark-variations.html"}
+{"type":"screen-added","file":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/content/a1-system.html"}
+{"type":"screen-added","file":"/Users/pratikrai/Documents/CS/fightcampwizard-website/.superpowers/brainstorm/25030-1780761060/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

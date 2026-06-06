@@ -40,12 +40,12 @@ function ChatBubble({
         className={[
           "min-w-0 max-w-[85%] break-words rounded-3xl px-4 py-3 text-sm leading-relaxed shadow-soft sm:max-w-[78%] sm:text-[0.95rem]",
           isWizard
-            ? "rounded-bl-md bg-white text-ink ring-1 ring-brand-100"
+            ? "rounded-bl-md bg-surface text-ink ring-1 ring-white/[0.06]"
             : "rounded-br-md bg-brand-600 text-white",
         ].join(" ")}
       >
         {isWizard && (
-          <span className="mb-1 flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-brand-600">
+          <span className="mb-1 flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-wider text-accent">
             <img
               src={WIZARD.logo}
               alt=""
@@ -62,7 +62,7 @@ function ChatBubble({
 
 export default function MeetWizard() {
   return (
-    <section className="relative overflow-hidden bg-hero-grad py-20 sm:py-28">
+    <section className="relative overflow-hidden border-t border-white/[0.06] bg-night py-20 sm:py-28">
       <div className="container-px">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Mascot side */}
@@ -71,28 +71,30 @@ export default function MeetWizard() {
               {/* Soft glowing radial blob */}
               <div
                 aria-hidden
-                className="absolute inset-0 -z-10 mx-auto h-72 w-72 rounded-full bg-brand-400/40 blur-3xl sm:h-96 sm:w-96"
+                className="absolute inset-0 -z-10 mx-auto h-72 w-72 rounded-full bg-brand-500/25 blur-3xl sm:h-96 sm:w-96"
               />
               <img
                 src={WIZARD.thoughtful}
                 alt="The FightCamp Wizard, thinking through your cut"
                 className="w-64 animate-float-slow drop-shadow-2xl sm:w-80 lg:w-full"
               />
-              {/* Floating sparkle accents */}
-              <span className="absolute -right-2 top-6 animate-bounce-soft text-2xl sm:text-3xl">
-                ✨
-              </span>
-              <span className="absolute bottom-10 -left-1 animate-float text-xl sm:text-2xl">
-                💧
-              </span>
+              {/* Floating glow accents */}
+              <span
+                aria-hidden
+                className="absolute -right-2 top-6 h-2.5 w-2.5 animate-float rounded-full bg-accent/70 shadow-glow"
+              />
+              <span
+                aria-hidden
+                className="absolute bottom-10 -left-1 h-2 w-2 animate-float rounded-full bg-brand-400/70 shadow-glow"
+              />
             </div>
           </Reveal>
 
           {/* Copy + chat side */}
           <div className="order-1 min-w-0 lg:order-2">
             <Reveal>
-              <span className="eyebrow">Meet your Wizard 🧙</span>
-              <h2 className="mt-5 font-display text-3xl font-extrabold leading-tight text-ink text-balance sm:text-4xl lg:text-5xl">
+              <span className="eyebrow">Meet your Wizard</span>
+              <h2 className="mt-5 font-display text-3xl font-extrabold uppercase leading-tight text-ink text-balance sm:text-4xl lg:text-5xl">
                 Your AI cornerman,{" "}
                 <span className="text-gradient">in your pocket</span>
               </h2>
@@ -105,7 +107,7 @@ export default function MeetWizard() {
             </Reveal>
 
             {/* Chat bubbles */}
-            <div className="mt-8 space-y-3 rounded-4xl border border-brand-100 bg-white/60 p-4 backdrop-blur-sm sm:p-5">
+            <div className="mt-8 space-y-3 rounded-4xl border border-white/[0.06] bg-surface-2/60 p-4 backdrop-blur-sm sm:p-5">
               {THREAD.map((m, i) => (
                 <ChatBubble
                   key={i}

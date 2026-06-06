@@ -5,7 +5,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section className="mt-10">
       <h2 className="font-display text-xl font-bold text-ink sm:text-2xl">{title}</h2>
-      <div className="mt-3 space-y-4 text-base leading-relaxed text-ink-soft text-pretty">
+      <div className="mt-3 space-y-4 text-base leading-relaxed text-ink-muted text-pretty">
         {children}
       </div>
     </section>
@@ -14,7 +14,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export default function Terms() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-night">
       <div className="container-px pt-28 pb-20 sm:pt-36 sm:pb-28">
         <article className="mx-auto max-w-3xl">
           <header>
@@ -26,7 +26,7 @@ export default function Terms() {
               Last updated: June 2026
             </p>
 
-            <div className="mt-6 rounded-2xl border-2 border-sun/40 bg-sun/10 p-4 text-sm leading-relaxed text-ink-soft sm:p-5">
+            <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/[0.08] p-4 text-sm leading-relaxed text-ink-soft sm:p-5">
               <strong className="font-bold text-ink">Please note:</strong> This is
               a template provided as a starting point. Review it with a qualified
               legal professional before launch to make sure it fits your
@@ -196,7 +196,7 @@ export default function Terms() {
               If you have questions about these Terms, reach out at{" "}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="font-semibold text-brand-600 underline underline-offset-2"
+                className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"
               >
                 {CONTACT_EMAIL}
               </a>
@@ -204,11 +204,11 @@ export default function Terms() {
             </p>
           </Section>
 
-          <footer className="mt-12 border-t border-ink/10 pt-6 text-sm text-ink-muted">
+          <footer className="mt-12 border-t border-white/[0.07] pt-6 text-sm text-ink-muted">
             See also our{" "}
             <Link
               to="/privacy"
-              className="font-semibold text-brand-600 underline underline-offset-2"
+              className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"
             >
               Privacy Policy
             </Link>

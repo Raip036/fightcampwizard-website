@@ -56,7 +56,7 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-ink/5 bg-white/80 backdrop-blur-xl"
+          ? "border-b border-white/[0.06] bg-night/80 backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
@@ -70,8 +70,8 @@ export default function Navbar() {
             }}
             className="h-9 w-9 shrink-0 rounded-xl object-cover sm:h-10 sm:w-10"
           />
-          <span className="truncate font-display text-lg font-extrabold tracking-tight text-ink sm:text-xl">
-            FightCamp <span className="text-brand-600">Wizard</span>
+          <span className="truncate font-display text-lg font-extrabold uppercase tracking-tight text-ink sm:text-xl">
+            FightCamp <span className="text-accent">Wizard</span>
           </span>
         </Link>
 
@@ -97,7 +97,7 @@ export default function Navbar() {
         <button
           aria-label="Menu"
           onClick={() => setOpen((v) => !v)}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-ink/10 bg-white/70 xl:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-surface/70 xl:hidden"
         >
           <div className="space-y-1.5">
             <span
@@ -127,7 +127,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="overflow-hidden border-t border-ink/5 bg-white/95 backdrop-blur-xl xl:hidden"
+            className="overflow-hidden border-t border-white/[0.06] bg-night/95 backdrop-blur-xl xl:hidden"
           >
             <div className="container-px flex flex-col gap-1 py-4">
               {NAV_LINKS.map((l) => (
@@ -137,8 +137,8 @@ export default function Navbar() {
                   aria-current={isActive(l.href) ? "page" : undefined}
                   className={`rounded-xl px-4 py-3 font-display font-bold transition-colors ${
                     isActive(l.href)
-                      ? "bg-brand-50 text-brand-700"
-                      : "text-ink hover:bg-brand-50"
+                      ? "bg-white/[0.06] text-accent"
+                      : "text-ink hover:bg-white/[0.04] hover:text-accent"
                   }`}
                 >
                   {l.label}
@@ -167,8 +167,8 @@ function NavItem({
   const isRoute = href.startsWith("/") && !href.includes("#");
   const cls = `inline-flex h-11 items-center whitespace-nowrap rounded-xl px-3 font-display text-sm font-bold transition-colors cursor-pointer ${
     active
-      ? "bg-brand-50 text-brand-700"
-      : "text-ink-soft hover:bg-brand-50 hover:text-brand-700"
+      ? "bg-white/[0.06] text-accent"
+      : "text-ink-soft hover:bg-white/[0.04] hover:text-accent"
   }`;
   return isRoute ? (
     <Link to={href} className={cls} aria-current={active ? "page" : undefined}>

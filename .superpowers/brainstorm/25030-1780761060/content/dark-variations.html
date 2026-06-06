@@ -1,0 +1,152 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Archivo:wght@600;700;800;900&family=Archivo+Black&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  .dv-grid { display:grid; gap:28px; }
+  @media (min-width:1100px){ .dv-grid{ grid-template-columns:repeat(2,1fr);} }
+
+  .dv { border-radius:20px; overflow:hidden; cursor:pointer; border:2px solid transparent;
+        transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        box-shadow:0 18px 50px -22px rgba(0,0,0,.5); }
+  .dv:hover{ transform:translateY(-6px); box-shadow:0 30px 70px -24px rgba(0,0,0,.6); }
+  .dv.selected{ border-color:#3b82f6; box-shadow:0 0 0 4px rgba(59,130,246,.28), 0 30px 70px -24px rgba(0,0,0,.6); }
+
+  .pv{ position:relative; height:380px; overflow:hidden; }
+  .dvb{ padding:18px 20px 22px; background:#11151c; color:#e7ecf3; }
+  .dvb h3{ margin:0 0 4px; font:800 18px/1.2 'Archivo',sans-serif; letter-spacing:-.01em; }
+  .dvb .tag{ font:600 10.5px/1 'IBM Plex Mono',monospace; letter-spacing:.16em; text-transform:uppercase; color:#6b8cce; }
+  .dvb p{ margin:9px 0 0; font:400 13px/1.55 'Inter',sans-serif; color:#aeb8c7; }
+
+  .nv{ display:flex; align-items:center; justify-content:space-between; padding:14px 18px; font-family:'Inter',sans-serif; position:relative; z-index:3;}
+  .br{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:13px; letter-spacing:-.01em; }
+  .lg{ width:22px; height:22px; border-radius:7px; background:linear-gradient(135deg,#3b82f6,#1d4ed8); }
+
+  /* ---------- A1 CORNERMAN CLASSIC ---------- */
+  .a1{ background:radial-gradient(120% 90% at 80% -10%,#15233f 0%,#0a0e14 55%); color:#eaf0fb;}
+  .a1 .cta{ font:700 10px 'Inter'; background:#2563eb; color:#fff; padding:6px 12px; border-radius:8px;}
+  .a1 .grid{ position:absolute; inset:0; background-image:linear-gradient(rgba(91,131,214,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(91,131,214,.07) 1px,transparent 1px); background-size:34px 34px; mask-image:linear-gradient(#000,transparent 80%);}
+  .a1 .bd{ position:relative; padding:30px 20px 0; z-index:2;}
+  .ey1{ font:500 9.5px 'IBM Plex Mono'; letter-spacing:.22em; text-transform:uppercase; color:#5b9cff;}
+  .h1x{ font:900 34px/0.96 'Archivo'; letter-spacing:-.02em; text-transform:uppercase; margin:12px 0 0;}
+  .h1x .o{ color:#5b9cff;}
+  .s1{ font:400 11px/1.5 'Inter'; color:#9fb0cc; margin:13px 0 17px; max-width:240px;}
+  .b1{ font:800 10.5px 'Inter'; background:#2563eb; color:#fff; padding:9px 16px; border-radius:9px;}
+  .b2{ font:700 10.5px 'Inter'; border:1px solid rgba(255,255,255,.2); color:#dbe6fb; padding:9px 14px; border-radius:9px;}
+  .st{ display:flex; gap:22px; margin-top:24px; border-top:1px solid rgba(255,255,255,.08); padding-top:14px;}
+  .st .n{ font:800 17px 'Archivo';} .st .l{ font:500 8px 'IBM Plex Mono'; letter-spacing:.12em; text-transform:uppercase; color:#7d8ba6; margin-top:3px;}
+
+  /* ---------- A2 INSTRUMENT (tactical HUD) ---------- */
+  .a2{ background:#07090d; color:#dfe7f2;}
+  .a2 .cta{ font:600 9.5px 'IBM Plex Mono'; border:1px solid #2b3a5e; color:#7fa8ff; padding:6px 11px; border-radius:6px; letter-spacing:.05em;}
+  .a2 .frame{ position:absolute; inset:14px; border:1px solid rgba(86,120,190,.22); border-radius:6px;}
+  .a2 .frame::before,.a2 .frame::after{ content:''; position:absolute; width:12px; height:12px; border:1px solid #4f7bd6;}
+  .a2 .frame::before{ top:-1px; left:-1px; border-right:0; border-bottom:0;}
+  .a2 .frame::after{ bottom:-1px; right:-1px; border-left:0; border-top:0;}
+  .a2 .bd{ position:relative; padding:30px 26px 0; z-index:2;}
+  .ey2{ font:500 9px 'IBM Plex Mono'; letter-spacing:.2em; text-transform:uppercase; color:#5f7fb5; display:flex; gap:8px; align-items:center;}
+  .dot{ width:5px;height:5px;border-radius:50%; background:#3b82f6; box-shadow:0 0 8px #3b82f6;}
+  .h2x{ font:700 27px/1.05 'Archivo'; letter-spacing:-.01em; margin:14px 0 0;}
+  .h2x .o{ color:#5b9cff;}
+  .s2{ font:400 10.5px/1.55 'IBM Plex Mono'; color:#7e8ba6; margin:12px 0 16px; max-width:250px;}
+  .b2x{ font:600 10px 'IBM Plex Mono'; background:#2563eb; color:#fff; padding:9px 15px; border-radius:6px; letter-spacing:.04em;}
+  .read{ margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); border:1px solid rgba(86,120,190,.18); border-radius:6px; overflow:hidden;}
+  .read div{ padding:11px 12px; border-right:1px solid rgba(86,120,190,.14);}
+  .read div:last-child{ border-right:0;}
+  .read .n{ font:600 15px 'IBM Plex Mono'; color:#cfe0ff;}
+  .read .l{ font:400 7.5px 'IBM Plex Mono'; letter-spacing:.12em; text-transform:uppercase; color:#5f7fb5; margin-top:4px;}
+
+  /* ---------- A3 HEADLINER (cinematic poster) ---------- */
+  .a3{ background:#080a10; color:#f1f5fc;}
+  .a3 .spot{ position:absolute; inset:0; background:radial-gradient(80% 55% at 50% 0%, rgba(59,130,246,.30), transparent 70%), radial-gradient(120% 80% at 50% 120%, rgba(0,0,0,.6), transparent);}
+  .a3 .cta{ font:700 10px 'Inter'; border:1px solid rgba(255,255,255,.25); color:#fff; padding:6px 12px; border-radius:999px;}
+  .a3 .bd{ position:relative; z-index:2; padding:34px 20px 0; text-align:center;}
+  .ey3{ font:700 9px 'Inter'; letter-spacing:.32em; text-transform:uppercase; color:#7fa8ff;}
+  .h3x{ font:400 46px/0.92 'Archivo Black'; letter-spacing:-.02em; text-transform:uppercase; margin:14px 0 0;}
+  .h3x .o{ color:transparent; -webkit-text-stroke:1.5px #5b9cff;}
+  .s3{ font:400 11px/1.5 'Inter'; color:#aab7d0; margin:16px auto 18px; max-width:230px;}
+  .b3{ font:800 11px 'Inter'; background:#fff; color:#0a0e14; padding:11px 22px; border-radius:10px;}
+
+  /* ---------- A4 VOLT (electric energy) ---------- */
+  .a4{ background:linear-gradient(135deg,#0a0e14 0%,#0d1424 60%,#0a0e14 100%); color:#eaf0fb; position:relative;}
+  .a4 .sweep{ position:absolute; top:-40%; right:-20%; width:320px; height:320px; background:radial-gradient(closest-side, rgba(59,130,246,.5), transparent 70%); filter:blur(6px);}
+  .a4 .cta{ font:700 10px 'Inter'; background:linear-gradient(135deg,#60a5fa,#2563eb); color:#fff; padding:6px 12px; border-radius:8px;}
+  .a4 .bd{ position:relative; z-index:2; padding:30px 20px 0;}
+  .ey4{ font:600 9.5px 'IBM Plex Mono'; letter-spacing:.2em; text-transform:uppercase; background:linear-gradient(90deg,#60a5fa,#22d3ee); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .h4x{ font:900 32px/0.98 'Archivo'; letter-spacing:-.02em; text-transform:uppercase; margin:12px 0 0;}
+  .h4x .o{ background:linear-gradient(90deg,#60a5fa,#22d3ee); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .s4{ font:400 11px/1.5 'Inter'; color:#9fb0cc; margin:13px 0 17px; max-width:240px;}
+  .b4{ font:800 10.5px 'Inter'; background:linear-gradient(135deg,#3b82f6,#22d3ee); color:#04121b; padding:10px 17px; border-radius:9px; box-shadow:0 8px 26px -8px rgba(34,211,238,.5);}
+  .hair{ height:1px; margin-top:22px; background:linear-gradient(90deg,transparent,rgba(96,165,250,.6),transparent);}
+  .chips{ display:flex; gap:8px; margin-top:14px;}
+  .chip{ font:600 8.5px 'IBM Plex Mono'; letter-spacing:.1em; text-transform:uppercase; color:#9fdcff; border:1px solid rgba(96,165,250,.3); padding:5px 9px; border-radius:999px;}
+</style>
+
+<h2>Direction A — four cinematic-dark variations</h2>
+<p class="subtitle">All keep the near-black, high-contrast athletic feel you liked. They differ in type, texture, and energy. Click your favourite, or say "A2 type with A4's accent", etc.</p>
+
+<div class="dv-grid">
+
+  <!-- A1 -->
+  <div class="dv" data-choice="A1" onclick="toggleSelect(this)">
+    <div class="pv a1">
+      <div class="grid"></div>
+      <div class="nv"><div class="br"><span class="lg"></span>FightCamp <span style="color:#5b9cff">Wizard</span></div><span class="cta">Get the App</span></div>
+      <div class="bd">
+        <div class="ey1">// AI-powered weight cutting</div>
+        <div class="h1x">HIT YOUR WEIGHT.<br><span class="o">EVERY CAMP.</span></div>
+        <div class="s1">Your AI cornerman maps every phase of the cut — to the gram.</div>
+        <span class="b1">Join the waitlist</span> <span class="b2">App Store</span>
+        <div class="st"><div><div class="n">10k+</div><div class="l">lbs cut</div></div><div><div class="n">98%</div><div class="l">made weight</div></div><div><div class="n">4.9★</div><div class="l">rating</div></div></div>
+      </div>
+    </div>
+    <div class="dvb"><div class="tag">Variation A1</div><h3>Cornerman — Classic</h3><p>The baseline you picked, refined. Radial depth, fine grid fading out, condensed uppercase, single electric-blue accent word, mono labels. Clean and confident.</p></div>
+  </div>
+
+  <!-- A2 -->
+  <div class="dv" data-choice="A2" onclick="toggleSelect(this)">
+    <div class="pv a2">
+      <div class="frame"></div>
+      <div class="nv"><div class="br"><span class="lg"></span>FightCamp <span style="color:#5b9cff">Wizard</span></div><span class="cta">GET APP</span></div>
+      <div class="bd">
+        <div class="ey2"><span class="dot"></span>SYS // WEIGHT-CUT ENGINE</div>
+        <div class="h2x">Hit your weight.<br><span class="o">Every camp.</span></div>
+        <div class="s2">// cornerman maps every phase of the cut to the gram. reads meals from a photo.</div>
+        <span class="b2x">JOIN WAITLIST →</span>
+        <div class="read"><div><div class="n">10.4k</div><div class="l">lbs cut</div></div><div><div class="n">98.2%</div><div class="l">made weight</div></div><div><div class="n">4.9</div><div class="l">rating</div></div></div>
+      </div>
+    </div>
+    <div class="dvb"><div class="tag">Variation A2</div><h3>Instrument — Tactical HUD</h3><p>Pure void black, hairline frame with corner ticks, monospace throughout, live-readout panel. Feels like a precision performance instrument. Most "engineered" of the four.</p></div>
+  </div>
+
+  <!-- A3 -->
+  <div class="dv" data-choice="A3" onclick="toggleSelect(this)">
+    <div class="pv a3">
+      <div class="spot"></div>
+      <div class="nv"><div class="br"><span class="lg"></span>FightCamp <span style="color:#5b9cff">Wizard</span></div><span class="cta">Get the App</span></div>
+      <div class="bd">
+        <div class="ey3">Your AI Cornerman</div>
+        <div class="h3x">MAKE<br><span class="o">WEIGHT</span></div>
+        <div class="s3">Step on the scale dialed in. Step in the cage full of fire.</div>
+        <span class="b3">Join the waitlist</span>
+      </div>
+    </div>
+    <div class="dvb"><div class="tag">Variation A3</div><h3>Headliner — Cinematic Poster</h3><p>One dramatic spotlight, a vignette, and a massive outlined headline that dominates like a fight poster. Maximum impact, minimal elements. Boldest, most editorial.</p></div>
+  </div>
+
+  <!-- A4 -->
+  <div class="dv" data-choice="A4" onclick="toggleSelect(this)">
+    <div class="pv a4">
+      <div class="sweep"></div>
+      <div class="nv"><div class="br"><span class="lg"></span>FightCamp <span style="color:#5b9cff">Wizard</span></div><span class="cta">Get the App</span></div>
+      <div class="bd">
+        <div class="ey4">⚡ AI-POWERED WEIGHT CUTTING</div>
+        <div class="h4x">HIT YOUR WEIGHT.<br><span class="o">EVERY CAMP.</span></div>
+        <div class="s4">Your AI cornerman dials in fight week to the gram.</div>
+        <span class="b4">Join the waitlist</span>
+        <div class="hair"></div>
+        <div class="chips"><span class="chip">MMA</span><span class="chip">Boxing</span><span class="chip">BJJ</span><span class="chip">Muay Thai</span></div>
+      </div>
+    </div>
+    <div class="dvb"><div class="tag">Variation A4</div><h3>Volt — Electric Energy</h3><p>Dark base with a blue→cyan electric glow and gradient accents. Keeps the athletic spark alive while staying premium. Glowing CTA, hairline dividers, discipline chips. Most energetic.</p></div>
+  </div>
+
+</div>

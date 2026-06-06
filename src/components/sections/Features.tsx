@@ -73,8 +73,8 @@ const TILES: Tile[] = [
     desc: "Snap a photo of any meal and get instant calories & macros.",
     icon: "scan",
     span: "lg:row-span-2",
-    tint: "bg-sun/10 text-ink",
-    iconColor: "text-flame",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "weight",
@@ -82,8 +82,8 @@ const TILES: Tile[] = [
     desc: "Weight trends, projections and a will-you-make-weight forecast.",
     icon: "weight",
     span: "lg:row-span-2",
-    tint: "bg-mint/10 text-ink",
-    iconColor: "text-mint",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "fightweek",
@@ -91,8 +91,8 @@ const TILES: Tile[] = [
     desc: "Water loading, sodium & carb manipulation, sweat protocol, guided and safe.",
     icon: "fightweek",
     span: "lg:row-span-2",
-    tint: "bg-grape/10 text-ink",
-    iconColor: "text-grape",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "rehydrate",
@@ -100,8 +100,8 @@ const TILES: Tile[] = [
     desc: "Science-based recovery after weigh-in so you perform on fight night.",
     icon: "rehydrate",
     span: "lg:row-span-2",
-    tint: "glass-card text-ink",
-    iconColor: "text-brand-600",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "coach",
@@ -109,8 +109,8 @@ const TILES: Tile[] = [
     desc: "Ask anything, get instant expert answers.",
     icon: "coach",
     span: "lg:row-span-2",
-    tint: "bg-brand-50 text-ink",
-    iconColor: "text-brand-600",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "insights",
@@ -118,8 +118,8 @@ const TILES: Tile[] = [
     desc: "AI insights drawn from your own data.",
     icon: "insights",
     span: "lg:col-span-2 lg:row-span-2",
-    tint: "bg-flame/10 text-ink",
-    iconColor: "text-flame",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
   {
     key: "safety",
@@ -127,8 +127,8 @@ const TILES: Tile[] = [
     desc: "Built-in guardrails so you never cut dangerously.",
     icon: "safety",
     span: "lg:row-span-2",
-    tint: "glass-card text-ink",
-    iconColor: "text-mint",
+    tint: "bg-surface border border-white/[0.07] text-ink",
+    iconColor: "text-accent",
   },
 ];
 
@@ -140,15 +140,15 @@ function MacroRing() {
   const R = 30;
   const C = 2 * Math.PI * R;
   const segs = [
-    { color: "#fb5607", frac: 0.45 }, // carbs
-    { color: "#2dd4bf", frac: 0.35 }, // protein
-    { color: "#8b5cf6", frac: 0.2 }, // fat
+    { color: "#5b9cff", frac: 0.45 }, // carbs (accent)
+    { color: "#7eb0ff", frac: 0.35 }, // protein (brand-400)
+    { color: "#d9b873", frac: 0.2 }, // fat (gold)
   ];
   let offset = 0;
   return (
     <div className="relative h-20 w-20 shrink-0" aria-hidden="true">
       <svg viewBox="0 0 80 80" className="h-full w-full -rotate-90">
-        <circle cx="40" cy="40" r={R} fill="none" stroke="#00000010" strokeWidth="9" />
+        <circle cx="40" cy="40" r={R} fill="none" stroke="#ffffff14" strokeWidth="9" />
         {segs.map((s, i) => {
           const dash = `${s.frac * C} ${C}`;
           const el = (
@@ -160,7 +160,7 @@ function MacroRing() {
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="font-display text-base font-bold leading-none text-ink">612</span>
-        <span className="text-[10px] font-medium text-ink-muted">kcal</span>
+        <span className="text-[10px] font-medium text-ink-faint">kcal</span>
       </div>
     </div>
   );
@@ -181,35 +181,35 @@ function WeightCard() {
   const line = pts.map((p, i) => `${i === 0 ? "M" : "L"}${p.x} ${p.y}`).join(" ");
   const area = `${line} L116 64 L4 64 Z`;
   return (
-    <div className="mt-auto w-full rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur sm:p-4">
+    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-baseline gap-2">
         <span className="font-display text-xl font-bold tabular-nums text-ink sm:text-2xl">76.4</span>
         <span className="text-xs font-medium text-ink-muted">kg today</span>
-        <span className="ml-auto rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-mint">
+        <span className="ml-auto rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
           -0.4 kg
         </span>
       </div>
       <div className="relative mt-2.5">
-        <span className="pointer-events-none absolute left-0 top-0 text-[9px] font-medium text-ink-muted">
+        <span className="pointer-events-none absolute left-0 top-0 text-[9px] font-medium text-ink-faint">
           78
         </span>
-        <span className="pointer-events-none absolute bottom-0 left-0 text-[9px] font-medium text-ink-muted">
+        <span className="pointer-events-none absolute bottom-0 left-0 text-[9px] font-medium text-ink-faint">
           74
         </span>
         <svg viewBox="0 0 120 66" className="h-16 w-full pl-5" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="wt-fill" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#2dd4bf" stopOpacity="0.35" />
-              <stop offset="100%" stopColor="#2dd4bf" stopOpacity="0" />
+              <stop offset="0%" stopColor="#5b9cff" stopOpacity="0.35" />
+              <stop offset="100%" stopColor="#5b9cff" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path d={area} fill="url(#wt-fill)" />
-          <path d={line} fill="none" stroke="#2dd4bf" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-          <circle cx="116" cy="52" r="3.2" fill="#2dd4bf" stroke="#fff" strokeWidth="1.5" />
+          <path d={line} fill="none" stroke="#5b9cff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="116" cy="52" r="3.2" fill="#5b9cff" stroke="#0b0d12" strokeWidth="1.5" />
         </svg>
       </div>
-      <div className="mt-2 flex items-center gap-1.5 rounded-2xl bg-mint/10 px-2.5 py-1.5">
-        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-mint" />
+      <div className="mt-2 flex items-center gap-1.5 rounded-2xl bg-success/10 px-2.5 py-1.5">
+        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-success" />
         <span className="text-[11px] font-semibold text-ink">On pace for 70.0 by Fri</span>
       </div>
     </div>
@@ -227,20 +227,20 @@ function FightWeekCard() {
     { day: "Sat", task: "Weigh-in", done: false },
   ];
   return (
-    <div className="mt-auto w-full rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur sm:p-4">
+    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Fight week</span>
-        <span className="rounded-full bg-grape/15 px-2 py-0.5 text-[10px] font-semibold text-grape">
+        <span className="rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
           Day 3 of 6
         </span>
-        <span className="ml-auto text-[10px] font-medium text-ink-muted">Auto-guided</span>
+        <span className="ml-auto text-[10px] font-medium text-ink-faint">Auto-guided</span>
       </div>
       <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1.5">
         {rows.map((r) => (
           <div key={r.day} className="flex items-center gap-1.5">
             <span
               className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-md ${
-                r.done ? "bg-grape text-white" : "border border-ink/15 text-transparent"
+                r.done ? "bg-accent text-night" : "border border-white/15 text-transparent"
               }`}
               aria-hidden="true"
             >
@@ -265,21 +265,21 @@ function RehydrateCard() {
     { t: "+3h", task: "Full meal + rehydrate", bar: "w-full", c: "bg-brand-600" },
   ];
   return (
-    <div className="mt-auto w-full rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur sm:p-4">
+    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Recovery plan</span>
-        <span className="ml-auto rounded-full bg-brand-50 px-2 py-0.5 text-[10px] font-semibold text-brand-600">
+        <span className="ml-auto rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
           +2.8 kg regained
         </span>
       </div>
       <div className="mt-2.5 space-y-2">
         {steps.map((s) => (
           <div key={s.t} className="flex items-center gap-2">
-            <span className="w-7 shrink-0 font-display text-[11px] font-bold tabular-nums text-brand-600">
+            <span className="w-7 shrink-0 font-display text-[11px] font-bold tabular-nums text-accent">
               {s.t}
             </span>
             <span className="min-w-0 flex-1 truncate text-[11px] font-medium text-ink">{s.task}</span>
-            <span className="h-1.5 w-10 shrink-0 overflow-hidden rounded-full bg-ink/5">
+            <span className="h-1.5 w-10 shrink-0 overflow-hidden rounded-full bg-white/10">
               <span className={`block h-full rounded-full ${s.c} ${s.bar}`} />
             </span>
           </div>
@@ -292,25 +292,27 @@ function RehydrateCard() {
 /* ── Wizard chatbot card (24/7 Wizard Coach) ─────────────────────────────── */
 function CoachCard() {
   return (
-    <div className="mt-auto w-full rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur sm:p-4">
+    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="space-y-2">
         <div className="flex justify-end">
-          <span className="max-w-[80%] rounded-2xl rounded-br-md bg-brand-600 px-3 py-1.5 text-[11px] font-medium leading-snug text-white">
+          <span className="max-w-[80%] rounded-2xl rounded-br-md bg-brand-500 px-3 py-1.5 text-[11px] font-medium leading-snug text-night">
             4 lbs over, fight in 3 days?
           </span>
         </div>
         <div className="flex items-end gap-1.5">
-          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-50 text-[11px]" aria-hidden="true">
-            🧙
+          <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-brand-500/30 bg-brand-500/15 text-accent" aria-hidden="true">
+            <svg viewBox="0 0 24 24" className="h-2.5 w-2.5" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 3l1.6 4.4L18 9l-4.4 1.6L12 15l-1.6-4.4L6 9l4.4-1.6z" /><path d="M5 18h14" />
+            </svg>
           </span>
-          <span className="max-w-[80%] rounded-2xl rounded-bl-md bg-ink/5 px-3 py-1.5 text-[11px] font-medium leading-snug text-ink">
+          <span className="max-w-[80%] rounded-2xl rounded-bl-md bg-white/[0.06] px-3 py-1.5 text-[11px] font-medium leading-snug text-ink">
             Totally doable. Start an 8L water load today, we'll taper from Thursday.
           </span>
         </div>
       </div>
-      <div className="mt-3 flex items-center gap-2 rounded-full border border-ink/10 bg-white px-3 py-1.5">
+      <div className="mt-3 flex items-center gap-2 rounded-full border border-white/10 bg-surface-3 px-3 py-1.5">
         <span className="text-[11px] font-medium text-ink-muted">Ask the Wizard...</span>
-        <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-brand-600 text-white" aria-hidden="true">
+        <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-brand-500 text-night" aria-hidden="true">
           <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
             <path d="M5 12h14M13 6l6 6-6 6" />
           </svg>
@@ -328,13 +330,13 @@ function RecoveryRing() {
   return (
     <div className="relative h-16 w-16 shrink-0" aria-hidden="true">
       <svg viewBox="0 0 72 72" className="h-full w-full -rotate-90">
-        <circle cx="36" cy="36" r={R} fill="none" stroke="#00000010" strokeWidth="8" />
+        <circle cx="36" cy="36" r={R} fill="none" stroke="#ffffff14" strokeWidth="8" />
         <circle
           cx="36"
           cy="36"
           r={R}
           fill="none"
-          stroke="#2dd4bf"
+          stroke="#5b9cff"
           strokeWidth="8"
           strokeLinecap="round"
           strokeDasharray={`${(score / 100) * C} ${C}`}
@@ -342,7 +344,7 @@ function RecoveryRing() {
       </svg>
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <span className="font-display text-base font-bold leading-none text-ink">{score}</span>
-        <span className="text-[8px] font-medium text-ink-muted">recovery</span>
+        <span className="text-[8px] font-medium text-ink-faint">recovery</span>
       </div>
     </div>
   );
@@ -351,12 +353,12 @@ function RecoveryRing() {
 /* ── Macro + Recovery insights card (two stacked mini cards) ─────────────── */
 function InsightsCard() {
   return (
-    <div className="mt-auto grid w-full gap-3 sm:grid-cols-2">
+    <div className="mt-5 grid w-full gap-3 sm:grid-cols-2">
       {/* analysed diet → vitamin breakdown (how the feature actually works) */}
-      <div className="rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur">
+      <div className="rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
         <div className="flex items-center justify-between">
           <span className="font-display text-xs font-bold text-ink">Analysed diet</span>
-          <span className="text-[10px] font-medium text-ink-muted">% daily target</span>
+          <span className="text-[10px] font-medium text-ink-faint">% daily target</span>
         </div>
         <div className="mt-2 space-y-1.5">
           {[
@@ -368,26 +370,26 @@ function InsightsCard() {
             <div key={v.l}>
               <div className="flex items-center justify-between text-[11px] font-medium">
                 <span className="text-ink-muted">{v.l}</span>
-                <span className={`font-semibold ${v.low ? "text-flame" : "text-ink"}`}>
+                <span className={`font-semibold ${v.low ? "text-warn" : "text-ink"}`}>
                   {v.pct}%
                 </span>
               </div>
-              <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-black/5">
+              <div className="mt-0.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
                 <div
-                  className={`h-full rounded-full ${v.low ? "bg-flame" : "bg-mint"}`}
+                  className={`h-full rounded-full ${v.low ? "bg-warn" : "bg-accent"}`}
                   style={{ width: `${v.pct}%` }}
                 />
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-2 rounded-2xl bg-flame/10 px-2.5 py-1.5 text-[11px] font-semibold text-ink">
+        <div className="mt-2 rounded-2xl bg-warn/10 px-2.5 py-1.5 text-[11px] font-semibold text-ink">
           Vitamin D's low, add eggs & sunlight.
         </div>
       </div>
 
       {/* recovery page */}
-      <div className="rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur">
+      <div className="rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card">
         <span className="font-display text-xs font-bold text-ink">Recovery</span>
         <div className="mt-2 flex items-center gap-3">
           <RecoveryRing />
@@ -414,10 +416,10 @@ function InsightsCard() {
 /* ── Safe-cut guardrail card (Safety First) ──────────────────────────────── */
 function SafetyCard() {
   return (
-    <div className="mt-auto w-full rounded-3xl bg-white/75 p-3.5 shadow-card backdrop-blur sm:p-4">
+    <div className="mt-5 w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Safe cut zone</span>
-        <span className="ml-auto rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-mint">
+        <span className="ml-auto rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
           Within safe range
         </span>
       </div>
@@ -425,11 +427,11 @@ function SafetyCard() {
         <span className="font-display text-xl font-bold tabular-nums text-ink sm:text-2xl">6.2%</span>
         <span className="text-[11px] font-medium text-ink-muted">of bodyweight</span>
       </div>
-      <div className="relative mt-2 h-2 w-full overflow-hidden rounded-full bg-gradient-to-r from-mint via-sun to-flame">
+      <div className="relative mt-2 h-2 w-full overflow-hidden rounded-full bg-gradient-to-r from-success via-gold to-danger">
         {/* marker at the athlete's position inside the safe band */}
-        <span className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white bg-ink shadow-card" style={{ left: "31%" }} aria-hidden="true" />
+        <span className="absolute top-1/2 h-3.5 w-3.5 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-night bg-ink shadow-card" style={{ left: "31%" }} aria-hidden="true" />
       </div>
-      <div className="mt-1 flex justify-between text-[9px] font-semibold text-ink-muted">
+      <div className="mt-1 flex justify-between text-[9px] font-semibold text-ink-faint">
         <span>Safe</span>
         <span>Caution</span>
         <span>Risky</span>
@@ -449,21 +451,31 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
         whileHover={hover}
         whileTap={tap}
         transition={{ type: "spring", stiffness: 320, damping: 22 }}
-        className={`group relative flex h-full min-w-0 flex-col gap-4 overflow-hidden rounded-4xl p-5 shadow-card sm:p-6 ${tile.tint} ${
-          dark ? "shadow-glow" : "border border-ink/5"
+        className={`group relative flex min-w-0 flex-col gap-4 overflow-hidden rounded-4xl p-5 shadow-card sm:p-6 ${tile.tint} ${
+          dark ? "shadow-glow" : ""
         }`}
       >
-        {/* large feature tile: floating mascot accent */}
+        {/* large feature tile: floating mascot accent with soft blue corner-glow */}
         {tile.key === "plan" && (
-          <img
-            src={WIZARD.thoughtful}
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-6 -right-4 hidden w-28 select-none opacity-90 animate-float-slow sm:block sm:w-32 lg:w-44"
-          />
+          <>
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-10 -right-10 h-44 w-44 rounded-full bg-accent/25 blur-3xl"
+            />
+            <img
+              src={WIZARD.thoughtful}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-6 -right-4 hidden w-28 select-none opacity-90 animate-float sm:block sm:w-32 lg:w-44"
+            />
+          </>
         )}
 
-        <div className={`flex h-9 w-9 items-center justify-center ${tile.iconColor}`}>
+        <div
+          className={`flex items-center justify-center ${tile.iconColor} ${
+            dark ? "h-9 w-9" : "h-9 w-9"
+          }`}
+        >
           {ic[tile.icon]}
         </div>
 
@@ -478,13 +490,13 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
 
         {/* Meal-scan tile: rich mini visual */}
         {tile.key === "scan" && (
-          <div className="mt-auto flex items-center gap-3 rounded-3xl bg-white/70 p-3 backdrop-blur">
+          <div className="mt-5 flex items-center gap-3 rounded-3xl border border-white/[0.07] bg-surface-2 p-3">
             <MacroRing />
             <div className="min-w-0 space-y-1.5 text-xs font-medium">
               {[
-                { l: "Carbs", c: "bg-flame", v: "68g" },
-                { l: "Protein", c: "bg-mint", v: "42g" },
-                { l: "Fat", c: "bg-grape", v: "19g" },
+                { l: "Carbs", c: "bg-accent", v: "68g" },
+                { l: "Protein", c: "bg-brand-400", v: "42g" },
+                { l: "Fat", c: "bg-gold", v: "19g" },
               ].map((m) => (
                 <div key={m.l} className="flex items-center gap-2">
                   <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${m.c}`} />
@@ -498,23 +510,23 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
 
         {/* large plan tile: realistic mock cut-plan card */}
         {tile.key === "plan" && (
-          <div className="relative z-10 mt-auto w-full max-w-sm rounded-3xl bg-white p-3.5 shadow-card backdrop-blur sm:p-4">
+          <div className="relative z-10 mt-5 w-full max-w-sm rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
             {/* card header */}
             <div className="flex items-center gap-2">
               <span className="font-display text-sm font-bold text-ink">Your cut plan</span>
-              <span className="rounded-full bg-mint/15 px-2 py-0.5 text-[10px] font-semibold text-mint">
+              <span className="rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
                 On track
               </span>
-              <span className="ml-auto text-[10px] font-medium text-ink-muted">5 days to weigh-in</span>
+              <span className="ml-auto text-[10px] font-medium text-ink-faint">5 days to weigh-in</span>
             </div>
 
             {/* day rows */}
-            <div className="mt-2.5 divide-y divide-ink/5">
+            <div className="mt-2.5 divide-y divide-white/[0.06]">
               {[
-                { day: "Mon", w: "78.4", task: "Water load", tone: "text-brand-600 bg-brand-50" },
-                { day: "Tue", w: "77.6", task: "Carb taper", tone: "text-sun bg-sun/10" },
-                { day: "Wed", w: "76.8", task: "Sodium cut", tone: "text-flame bg-flame/10" },
-                { day: "Weigh-in", w: "76.0", task: "Make weight", tone: "text-mint bg-mint/15" },
+                { day: "Mon", w: "78.4", task: "Water load", tone: "text-accent bg-brand-500/15" },
+                { day: "Tue", w: "77.6", task: "Carb taper", tone: "text-gold bg-gold/10" },
+                { day: "Wed", w: "76.8", task: "Sodium cut", tone: "text-accent bg-brand-500/15" },
+                { day: "Weigh-in", w: "76.0", task: "Make weight", tone: "text-success bg-success/15" },
               ].map((r) => (
                 <div key={r.day} className="flex items-center gap-2 py-1.5">
                   <span className="w-14 shrink-0 text-[11px] font-semibold text-ink sm:text-xs">{r.day}</span>
@@ -530,7 +542,7 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
             </div>
 
             {/* downward trend bar */}
-            <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-ink/5">
+            <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
               <div className="h-full w-3/4 rounded-full bg-brand-grad" />
             </div>
           </div>
@@ -549,12 +561,12 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
 
 export default function Features() {
   return (
-    <section id="features" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="bg-grid pointer-events-none absolute inset-0 opacity-40" aria-hidden="true" />
+    <section id="features" className="relative overflow-hidden border-t border-white/[0.06] bg-night py-20 sm:py-28">
+      <div className="bg-grid pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true" />
       <div className="container-px relative mx-auto max-w-7xl">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Everything in your corner</span>
-          <h2 className="text-balance mt-3 font-display text-3xl font-extrabold leading-[1.1] text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="text-balance mt-3 font-display text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl lg:text-5xl">
             One app. <span className="text-gradient">Your entire weight cut.</span>
           </h2>
           <p className="text-pretty mx-auto mt-4 max-w-xl text-base text-ink-muted sm:text-lg">
@@ -563,7 +575,7 @@ export default function Features() {
           </p>
         </Reveal>
 
-        <div className="mt-12 grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid auto-rows-min grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {TILES.map((tile, idx) => (
             <TileCard key={tile.key} tile={tile} idx={idx} />
           ))}

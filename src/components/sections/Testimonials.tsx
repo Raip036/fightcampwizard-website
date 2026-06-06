@@ -21,7 +21,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Jordan Tate",
     initials: "JT",
-    color: "bg-brand-600",
+    color: "bg-gradient-to-br from-brand-400 to-brand-600",
     meta: "Lightweight · MMA",
     quote:
       "First camp I have ever made weight without feeling half dead. The Wizard mapped the whole cut day by day, so I always knew exactly where I should be.",
@@ -29,7 +29,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Mia Kovac",
     initials: "MK",
-    color: "bg-flame",
+    color: "bg-gradient-to-br from-brand-500 to-brand-700",
     meta: "Flyweight · Boxing",
     quote:
       "I used to crash diet the last week and pay for it on fight night. Now I walk in lean and full of energy. Honestly the calmest weigh-in of my career.",
@@ -37,7 +37,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Andre Silva",
     initials: "AS",
-    color: "bg-grape",
+    color: "bg-gradient-to-br from-gold to-gold-light",
     meta: "Featherweight · BJJ",
     quote:
       "The meal scan saved me. I just snap a photo and it keeps my macros honest. Hitting weight stopped being guesswork and started being a plan.",
@@ -45,7 +45,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Rhea Donovan",
     initials: "RD",
-    color: "bg-mint",
+    color: "bg-gradient-to-br from-brand-300 to-brand-500",
     meta: "Bantamweight · Muay Thai",
     quote:
       "Coming off the water the right way always scared me. The rehydration guidance walked me through it step by step and I felt strong by the time I stepped in.",
@@ -53,7 +53,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Caleb Lawson",
     initials: "CL",
-    color: "bg-brand-500",
+    color: "bg-gradient-to-br from-brand-500 to-brand-800",
     meta: "Welterweight · Wrestling",
     quote:
       "My coach loves it because the projections are spot on. We trust the numbers and adjust early instead of panicking on the scale the night before.",
@@ -61,7 +61,7 @@ const TESTIMONIALS: Testimonial[] = [
   {
     name: "Tara Whitfield",
     initials: "TW",
-    color: "bg-sun",
+    color: "bg-gradient-to-br from-brand-400 to-brand-700",
     meta: "Strawweight · Judo",
     quote:
       "Cutting weight safely was always the part nobody taught me. Having a smart cornerman in my pocket made the whole process feel under control.",
@@ -71,7 +71,7 @@ const TESTIMONIALS: Testimonial[] = [
 function Stars() {
   return (
     <div
-      className="flex items-center gap-0.5 text-sun"
+      className="flex items-center gap-0.5 text-gold"
       role="img"
       aria-label="Rated 5 out of 5 stars"
     >
@@ -92,7 +92,7 @@ function Stars() {
 function Avatar({ initials, color }: { initials: string; color: string }) {
   return (
     <div
-      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${color} font-display text-sm font-bold text-white shadow-soft ring-2 ring-white`}
+      className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${color} font-display text-sm font-bold text-ink shadow-card ring-2 ring-white/10`}
       aria-hidden="true"
     >
       {initials}
@@ -106,30 +106,30 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden border-y border-ink/5 bg-sand/40 py-16 sm:py-24"
+      className="relative overflow-hidden border-y border-white/[0.07] bg-night py-16 sm:py-24"
     >
       {/* soft background accents */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-grid opacity-[0.35]"
+        className="pointer-events-none absolute inset-0 bg-grid opacity-30"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-brand-200/40 blur-3xl"
+        className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-accent/15 blur-3xl"
       />
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-mint/20 blur-3xl"
+        className="pointer-events-none absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-brand-500/10 blur-3xl"
       />
 
       <div className="container-px relative">
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Loved by fighters</span>
-          <h2 className="mt-3 text-balance font-display text-3xl font-extrabold tracking-tight text-ink sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 text-balance font-display text-3xl font-extrabold uppercase tracking-tight text-ink sm:text-4xl lg:text-5xl">
             Fighters are making weight the{" "}
             <span className="text-gradient">smart way.</span>
           </h2>
-          <p className="mt-4 text-pretty text-base text-ink-soft sm:text-lg">
+          <p className="mt-4 text-pretty text-base text-ink-muted sm:text-lg">
             Real disciplines, real weight classes, one calmer fight week. Here is
             what early testers say about cutting with their Wizard in the corner.
           </p>
@@ -151,16 +151,16 @@ export default function Testimonials() {
               className="glass-card flex h-full flex-col rounded-4xl p-6 transition-transform duration-300 will-change-transform hover:-translate-y-1 sm:p-7"
             >
               <Stars />
-              <blockquote className="mt-4 flex-1 text-pretty text-[15px] leading-relaxed text-ink-soft sm:text-base">
+              <blockquote className="mt-4 flex-1 text-pretty text-[15px] leading-relaxed text-ink sm:text-base">
                 {t.quote}
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3 border-t border-ink/5 pt-5">
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-white/[0.07] pt-5">
                 <Avatar initials={t.initials} color={t.color} />
                 <div className="min-w-0">
                   <p className="truncate font-display text-sm font-bold text-ink">
                     {t.name}
                   </p>
-                  <p className="truncate text-xs font-medium text-ink-muted">
+                  <p className="truncate font-mono text-xs text-ink-muted">
                     {t.meta}
                   </p>
                 </div>
@@ -170,7 +170,7 @@ export default function Testimonials() {
         </div>
 
         {/* disclaimer */}
-        <p className="mx-auto mt-10 max-w-2xl text-balance text-center text-[11px] leading-relaxed text-ink-muted/80 sm:text-xs">
+        <p className="mx-auto mt-10 max-w-2xl text-balance text-center text-[11px] leading-relaxed text-ink-faint sm:text-xs">
           *Illustrative quotes from early FightCamp Wizard beta testers, shared
           with permission. Individual results vary; weight cutting carries risks,
           always cut responsibly under professional guidance.
