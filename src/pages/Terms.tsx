@@ -12,6 +12,20 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+function SubTitle({ children }: { children: React.ReactNode }) {
+  return <h3 className="font-semibold text-ink">{children}</h3>;
+}
+
+function Bullets({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ul className="list-disc space-y-2 pl-5">
+      {items.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Terms() {
   return (
     <div className="overflow-x-hidden bg-night">
@@ -23,177 +37,192 @@ export default function Terms() {
               Terms of Service
             </h1>
             <p className="mt-3 text-sm font-medium text-ink-muted">
-              Last updated: June 2026
+              Last updated: April 13, 2026
             </p>
-
-            <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/[0.08] p-4 text-sm leading-relaxed text-ink-soft sm:p-5">
-              <strong className="font-bold text-ink">Please note:</strong> This is
-              a template provided as a starting point. Review it with a qualified
-              legal professional before launch to make sure it fits your
-              jurisdiction and practices.
-            </div>
           </header>
 
-          <Section title="1. Acceptance of terms">
+          <div className="mt-8 text-base leading-relaxed text-ink-muted text-pretty">
             <p>
-              These Terms of Service ("Terms") govern your access to and use of{" "}
-              {APP_NAME} and its related services (the "Service"). By downloading,
-              accessing, or using the Service, you agree to be bound by these
-              Terms. If you do not agree, please do not use the Service.
+              By using {APP_NAME} ("the app"), you agree to these terms. If you do
+              not agree, do not use the app.
+            </p>
+          </div>
+
+          <Section title="1. Service description">
+            <p>
+              {APP_NAME} is a fitness and nutrition tracking application designed for
+              combat sport athletes and individuals managing their weight. The app
+              provides tools for weight tracking, meal logging, sleep tracking,
+              training session management, recovery analytics, and AI-generated
+              nutritional guidance.
             </p>
           </Section>
 
-          <Section title="2. Description of the service">
-            <p>
-              {APP_NAME} is an AI-powered companion app for combat-sports athletes
-              that provides informational guidance, tracking, and planning tools
-              to help manage weight cuts, hydration, nutrition, and fight-week
-              preparation. The Service is provided for informational and
-              educational purposes only.
-            </p>
-          </Section>
-
-          <Section title="3. Eligibility & age">
-            <p>
-              You must be at least 16 years old to use the Service. Users under 18
-              should use the Service only with the guidance and supervision of a
-              parent, guardian, or qualified coach. By using the Service, you
-              represent that you meet these requirements.
-            </p>
-          </Section>
-
-          <Section title="4. Account responsibilities">
-            <p>
-              You are responsible for maintaining the confidentiality of your
-              account credentials and for all activity that occurs under your
-              account. Provide accurate information, keep it up to date, and
-              notify us promptly of any unauthorised use of your account.
-            </p>
-          </Section>
-
-          <Section title="5. Subscriptions & billing">
-            <p>
-              The Service offers a free tier and a paid "Pro" subscription.
-              Subscriptions are processed through the Apple App Store using Apple
-              In-App Purchase.
-            </p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                Payment is charged to your Apple ID account at confirmation of
-                purchase.
-              </li>
-              <li>
-                Subscriptions automatically renew unless auto-renewal is turned
-                off at least 24 hours before the end of the current period.
-              </li>
-              <li>
-                You can manage or cancel your subscription at any time through
-                your Apple ID account settings in the App Store. Cancellation
-                takes effect at the end of the current billing period.
-              </li>
-              <li>
-                The free tier provides core features; the Pro tier unlocks
-                additional features as described in the app. Pricing and feature
-                availability may change over time.
-              </li>
-            </ul>
-          </Section>
-
-          <Section title="6. Acceptable use">
-            <p>You agree not to:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>Use the Service for any unlawful or harmful purpose.</li>
-              <li>
-                Attempt to reverse-engineer, copy, or disrupt the Service or its
-                infrastructure.
-              </li>
-              <li>
-                Misuse, resell, or provide false information through the Service.
-              </li>
-              <li>
-                Infringe the rights of others or violate any applicable laws or
-                regulations.
-              </li>
-            </ul>
-          </Section>
-
-          <Section title="7. Health & safety disclaimer">
+          <Section title="2. Medical disclaimer">
             <p>
               <strong className="text-ink">
-                This is important, please read carefully.
+                {APP_NAME} is not a medical device and does not provide medical
+                advice.
               </strong>{" "}
-              Weight cutting carries serious health risks, including dehydration,
-              and can be dangerous if done improperly. {APP_NAME} is an
-              informational tool only. It is not a medical device, and it does not
-              provide medical advice, diagnosis, or treatment.
+              All information, recommendations, and protocols generated by the app —
+              including AI coaching, fight week plans, rehydration protocols, and
+              diet analysis — are for educational and informational purposes only.
             </p>
+            <Bullets
+              items={[
+                "Always consult a qualified physician, sports dietitian, or medical professional before starting any weight cut, dietary change, or rehydration protocol",
+                "The app is not a substitute for professional medical advice, diagnosis, or treatment",
+                "Stop any protocol and seek immediate medical attention if you experience dizziness, confusion, nausea, chest pain, or any adverse symptoms",
+                "Weight cutting carries inherent health risks — the app helps plan and track, but you are responsible for your safety",
+                "AI-generated advice is based on general sports science research and may not account for your specific medical conditions",
+              ]}
+            />
+          </Section>
+
+          <Section title="3. Account & eligibility">
+            <Bullets
+              items={[
+                "You must be at least 17 years old to use the app",
+                "You are responsible for maintaining the security of your account credentials",
+                "You must provide accurate information when creating your account",
+                "One account per person — sharing accounts is not permitted",
+              ]}
+            />
+          </Section>
+
+          <Section title="4. Acceptable use">
+            <p>You agree not to:</p>
+            <Bullets
+              items={[
+                "Use the app for any unlawful purpose",
+                "Attempt to access other users' data or accounts",
+                "Reverse-engineer, decompile, or extract source code from the app",
+                "Abuse AI features (excessive requests, prompt injection, or automated scraping)",
+                "Upload harmful, offensive, or illegal content",
+                "Misrepresent the app's output as professional medical advice to others",
+              ]}
+            />
+          </Section>
+
+          <Section title="5. AI-generated content">
             <p>
-              Always consult a qualified physician, registered dietitian, or other
-              health professional before beginning any weight-cut, diet,
-              hydration, or training program, and stop immediately and seek help
-              if you feel unwell. You are solely responsible for decisions you
-              make about your health, and you assume all risk associated with your
-              use of the Service.
+              The app uses artificial intelligence (powered by Groq) to generate
+              meal plans, diet analysis, coaching advice, and other content.
+              AI-generated content:
+            </p>
+            <Bullets
+              items={[
+                "May contain inaccuracies — always verify nutritional data and recommendations",
+                "Is generated from general knowledge and does not constitute professional advice",
+                "Should not be relied upon as the sole basis for health or dietary decisions",
+                "May vary between requests for the same input",
+              ]}
+            />
+          </Section>
+
+          <Section title="6. Subscriptions & in-app purchases">
+            <SubTitle>Free tier</SubTitle>
+            <p>
+              The free tier includes weight tracking, nutrition logging, training
+              session logging, and the daily-wisdom feature. AI-powered features
+              (meal analysis, coach chat, weight insights, meal planning, etc.)
+              require a Pro subscription.
+            </p>
+
+            <SubTitle>Pro subscription</SubTitle>
+            <Bullets
+              items={[
+                "Pro unlocks unlimited AI features across the app",
+                "Available as a monthly or annual subscription via Apple In-App Purchase",
+                "Payment is charged to your Apple ID account at confirmation of purchase",
+                "Subscription automatically renews unless cancelled at least 24 hours before the end of the current billing period",
+                "You can manage or cancel your subscription in your Apple ID account settings or via the app's Settings > Manage Subscription",
+              ]}
+            />
+
+            <SubTitle>Refunds</SubTitle>
+            <p>
+              All purchases are processed by Apple. Refund requests must be submitted
+              through Apple's support channels. We do not process refunds directly.
+            </p>
+
+            <SubTitle>Price changes</SubTitle>
+            <p>
+              We may change subscription pricing. Any price change will take effect at
+              the start of your next billing period after notice. You may cancel
+              before the new price takes effect.
+            </p>
+          </Section>
+
+          <Section title="7. Data & privacy">
+            <p>
+              Your use of the app is also governed by our{" "}
+              <Link
+                to="/privacy"
+                className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"
+              >
+                Privacy Policy
+              </Link>
+              . By using the app, you consent to the collection and use of your data
+              as described therein.
             </p>
           </Section>
 
           <Section title="8. Intellectual property">
             <p>
-              The Service, including its software, design, branding, content, and
-              the {APP_NAME} name and mascot, is owned by us or our licensors and
-              is protected by intellectual-property laws. We grant you a limited,
-              non-exclusive, non-transferable licence to use the Service for your
-              personal, non-commercial use, subject to these Terms.
+              The app, its design, code, branding, and content are the intellectual
+              property of Pratik Rai. You may not reproduce, distribute, or create
+              derivative works from any part of the app without written permission.
             </p>
           </Section>
 
-          <Section title="9. Disclaimers & limitation of liability">
+          <Section title="9. Account termination">
+            <Bullets
+              items={[
+                "You may delete your account at any time from Settings — this permanently removes all your data",
+                "Deleting your account does not automatically cancel an active subscription — cancel via Apple ID settings first",
+                "We reserve the right to suspend or terminate accounts that violate these terms",
+                "Upon termination, all data associated with your account will be permanently deleted",
+              ]}
+            />
+          </Section>
+
+          <Section title="10. Limitation of liability">
             <p>
-              The Service is provided "as is" and "as available" without
-              warranties of any kind, whether express or implied, including
-              fitness for a particular purpose and non-infringement. We do not
-              warrant that the Service will be uninterrupted, error-free, or
-              produce any particular result.
+              To the maximum extent permitted by law, {APP_NAME} and its developers
+              are not liable for any direct, indirect, incidental, or consequential
+              damages arising from your use of the app. This includes but is not
+              limited to:
             </p>
+            <Bullets
+              items={[
+                "Health complications resulting from following app-generated protocols",
+                "Data loss or service interruptions",
+                "Inaccuracies in AI-generated content or nutritional data",
+                "Third-party service outages (Convex, Groq, RevenueCat, etc.)",
+              ]}
+            />
+          </Section>
+
+          <Section title="11. Changes to terms">
             <p>
-              To the maximum extent permitted by law, we are not liable for any
-              indirect, incidental, special, consequential, or punitive damages,
-              or any loss arising from your use of, or inability to use, the
-              Service, including any health outcomes.
+              We may update these terms from time to time. Changes take effect when
+              posted on this page. Continued use of the app after changes constitutes
+              acceptance of the updated terms.
             </p>
           </Section>
 
-          <Section title="10. Termination">
+          <Section title="12. Governing law">
             <p>
-              We may suspend or terminate your access to the Service at any time
-              if you violate these Terms or for any other reasonable cause. You
-              may stop using the Service at any time. Provisions that by their
-              nature should survive termination will continue to apply.
+              These terms are governed by the laws of England and Wales. Any disputes
+              will be subject to the exclusive jurisdiction of the courts of England
+              and Wales.
             </p>
           </Section>
 
-          <Section title="11. Governing law">
+          <Section title="13. Contact">
             <p>
-              These Terms are governed by the laws of [insert governing
-              jurisdiction], without regard to conflict-of-law principles. Any
-              disputes will be subject to the exclusive jurisdiction of the courts
-              located in [insert jurisdiction]. Finalise this section with your
-              legal advisor.
-            </p>
-          </Section>
-
-          <Section title="12. Changes to these terms">
-            <p>
-              We may update these Terms from time to time. When we make material
-              changes, we will update the "Last updated" date above and, where
-              appropriate, notify you within the app. Continued use of the Service
-              after changes means you accept the updated Terms.
-            </p>
-          </Section>
-
-          <Section title="13. Contact us">
-            <p>
-              If you have questions about these Terms, reach out at{" "}
+              For questions about these terms, email us at{" "}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"

@@ -12,6 +12,20 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   );
 }
 
+function SubTitle({ children }: { children: React.ReactNode }) {
+  return <h3 className="font-semibold text-ink">{children}</h3>;
+}
+
+function Bullets({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ul className="list-disc space-y-2 pl-5">
+      {items.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Privacy() {
   return (
     <div className="overflow-x-hidden bg-night">
@@ -23,169 +37,177 @@ export default function Privacy() {
               Privacy Policy
             </h1>
             <p className="mt-3 text-sm font-medium text-ink-muted">
-              Last updated: June 2026
+              Last updated: April 13, 2026
             </p>
-
-            <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/[0.08] p-4 text-sm leading-relaxed text-ink-soft sm:p-5">
-              <strong className="font-bold text-ink">Please note:</strong> This is
-              a template provided as a starting point. Review it with a qualified
-              legal professional before launch to make sure it fits your
-              jurisdiction and practices.
-            </div>
           </header>
 
-          <Section title="1. Introduction">
+          <div className="mt-8 text-base leading-relaxed text-ink-muted text-pretty">
             <p>
-              This Privacy Policy explains how {APP_NAME} ("we", "us", "our")
-              collects, uses, and protects information when you use our mobile
-              application and related services (the "Service"). By using the
-              Service, you agree to the practices described here.
+              {APP_NAME} ("we", "our", "the app") is operated by Pratik Rai. This
+              policy explains what data we collect, how we use it, and your rights
+              regarding your information.
+            </p>
+          </div>
+
+          <Section title="1. Data we collect">
+            <SubTitle>Account information</SubTitle>
+            <Bullets
+              items={[
+                "Email address (for authentication)",
+                "Display name (optional, set by you)",
+                "Profile photo (optional, uploaded by you)",
+                "Authentication tokens (managed by Convex Auth)",
+              ]}
+            />
+
+            <SubTitle>Health &amp; fitness data</SubTitle>
+            <Bullets
+              items={[
+                "Body weight logs (date and weight entries)",
+                "Nutrition logs (meal descriptions, calories, macronutrients)",
+                "Hydration intake records",
+                "Sleep logs (date and hours slept)",
+                "Training session logs (type, duration, intensity, RPE, notes)",
+                "Fight camp records (dates, weight targets, progress)",
+                "Recovery and wellness check-in data",
+              ]}
+            />
+
+            <SubTitle>Subscription &amp; purchase data</SubTitle>
+            <Bullets
+              items={[
+                "Subscription status and tier (managed by RevenueCat)",
+                "Anonymous purchase identifiers (no payment card details are stored by us)",
+                "AI gem balance and usage count",
+              ]}
+            />
+
+            <SubTitle>App usage data</SubTitle>
+            <Bullets
+              items={[
+                "Crash reports and error logs (via Sentry — no personal data included)",
+                "Feature usage patterns (anonymised)",
+                "Device type and iOS version (for compatibility)",
+              ]}
+            />
+          </Section>
+
+          <Section title="2. How we use your data">
+            <Bullets
+              items={[
+                "To provide personalised weight tracking, nutrition analysis, sleep tracking, and training insights",
+                "To generate AI-powered meal plans, diet analysis, and coaching advice",
+                "To calculate recovery scores, readiness metrics, and fight week schedules",
+                "To manage your subscription and AI gem balance",
+                "To maintain your account and sync data across sessions",
+                "To improve app stability and fix bugs (crash reports)",
+              ]}
+            />
+          </Section>
+
+          <Section title="3. Third-party services">
+            <p>We use the following services to operate the app:</p>
+
+            <SubTitle>Convex</SubTitle>
+            <p>
+              Database hosting, user authentication, realtime sync, file storage,
+              and serverless functions (including the AI inference orchestration
+              layer). All data is encrypted in transit (TLS) and at rest. Convex is
+              operated by Convex, Inc. on US-based infrastructure.
+            </p>
+
+            <SubTitle>Groq (Llama API)</SubTitle>
+            <p>
+              Powers AI features including meal analysis, diet scoring, fight week
+              protocols, daily coaching, training summaries, and the AI chatbot.
+              Meal descriptions and anonymised health context are sent to generate
+              personalised responses. No personal identifiers are included in AI
+              requests.
+            </p>
+
+            <SubTitle>RevenueCat</SubTitle>
+            <p>
+              Subscription management and in-app purchase processing. RevenueCat
+              receives anonymous app user identifiers and purchase receipts from
+              Apple to verify subscription status. No personal data, health data, or
+              account credentials are shared with RevenueCat.
+            </p>
+
+            <SubTitle>Sentry</SubTitle>
+            <p>
+              Error monitoring and crash reporting. Collects technical error data
+              only — no personal information, health data, or user content is sent to
+              Sentry. PII collection is disabled.
+            </p>
+
+            <SubTitle>USDA FoodData Central</SubTitle>
+            <p>
+              Food nutrition database used for ingredient lookups and food search.
+              Only search queries are sent — no user data.
+            </p>
+
+            <SubTitle>Open Food Facts</SubTitle>
+            <p>
+              Barcode-based food lookup database. Only barcode numbers are sent — no
+              user data.
             </p>
           </Section>
 
-          <Section title="2. Information we collect">
-            <p>We collect the following categories of information:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                <strong className="text-ink">Account information</strong>, such
-                as your name, email address, and authentication details when you
-                create an account.
-              </li>
-              <li>
-                <strong className="text-ink">Health, weight & nutrition data</strong>{" "}
-               , information you choose to enter, including body weight,
-                hydration, target weight class, meals, macros, and training
-                notes. You provide this voluntarily to receive coaching.
-              </li>
-              <li>
-                <strong className="text-ink">Usage analytics</strong>, how you
-                interact with features, screens viewed, and actions taken, so we
-                can understand and improve the app.
-              </li>
-              <li>
-                <strong className="text-ink">Device information</strong>, such as
-                device model, operating system version, app version, and general
-                diagnostic data.
-              </li>
-            </ul>
+          <Section title="4. Data storage & security">
+            <Bullets
+              items={[
+                "All data is stored in Convex — every function checks the caller's identity and only allows access to that user's own rows",
+                "All connections use HTTPS/TLS encryption",
+                "Authentication tokens are securely stored on-device",
+                "Profile photos and session media are stored in Convex File Storage and served over time-limited signed URLs",
+                "We do not sell, rent, or share your personal data with advertisers or data brokers",
+              ]}
+            />
           </Section>
 
-          <Section title="3. How we use your information">
-            <p>We use the information we collect to:</p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>Provide AI-powered coaching and weight-cut guidance.</li>
-              <li>Personalise plans, recommendations, and reminders to you.</li>
-              <li>Operate, maintain, troubleshoot, and improve the Service.</li>
-              <li>Communicate with you about updates, support, and your account.</li>
-            </ul>
-          </Section>
-
-          <Section title="4. AI processing">
+          <Section title="5. Your rights">
+            <Bullets
+              items={[
+                "Access: View all your data within the app at any time",
+                "Export: Download your data as CSV from Settings > Reset Data > Export",
+                "Deletion: Permanently delete your account and all data from Settings > Delete Account",
+                "Correction: Edit your profile, weight logs, and nutrition entries at any time",
+              ]}
+            />
             <p>
-              To generate personalised coaching, relevant information you enter
-              may be sent to third-party AI providers that power our guidance
-              features. We aim to send only the minimum data necessary for the
-              feature to work and do not include data beyond what is needed to
-              produce your result. AI-generated guidance is informational and is
-              not a substitute for professional medical or coaching advice.
+              Account deletion is immediate and irreversible. All database records,
+              authentication data, and stored files are permanently removed.
             </p>
           </Section>
 
-          <Section title="5. Data storage & security">
+          <Section title="6. Data retention">
             <p>
-              We use industry-standard technical and organisational measures to
-              protect your information, including encryption in transit and
-              access controls. No method of transmission or storage is completely
-              secure, so we cannot guarantee absolute security, but we work hard
-              to safeguard your data.
+              Your data is retained for as long as your account is active. When you
+              delete your account, all data is permanently removed from our servers
+              within 30 days (including any backups). Anonymised crash reports in
+              Sentry are retained for 90 days.
             </p>
           </Section>
 
-          <Section title="6. Third parties">
+          <Section title="7. Children's privacy">
             <p>
-              We rely on trusted third-party services to operate the app. These
-              may include:
-            </p>
-            <ul className="list-disc space-y-2 pl-5">
-              <li>
-                <strong className="text-ink">App Store & Apple In-App Purchase</strong>{" "}
-               , to distribute the app and process subscriptions and payments.
-              </li>
-              <li>
-                <strong className="text-ink">Analytics providers</strong>, to
-                help us understand usage and improve the Service.
-              </li>
-              <li>
-                <strong className="text-ink">AI providers</strong>, to generate
-                coaching and personalised guidance.
-              </li>
-            </ul>
-            <p>
-              These providers process data under their own terms and privacy
-              policies. We do not sell your personal information.
+              {APP_NAME} is not intended for users under 17 years of age. We do not
+              knowingly collect data from children. If you believe a child has
+              provided us with data, contact us to have it removed.
             </p>
           </Section>
 
-          <Section title="7. Data retention">
+          <Section title="8. Changes to this policy">
             <p>
-              We retain your information for as long as your account is active or
-              as needed to provide the Service, comply with legal obligations,
-              resolve disputes, and enforce our agreements. When data is no longer
-              needed, we take steps to delete or anonymise it.
+              We may update this policy from time to time. Changes will be reflected
+              on this page with an updated date. Continued use of the app constitutes
+              acceptance of the updated policy.
             </p>
           </Section>
 
-          <Section title="8. Your rights">
+          <Section title="9. Contact">
             <p>
-              Depending on where you live, you may have rights over your personal
-              data, including the right to access, correct, export, or delete it,
-              and to object to or restrict certain processing. These rights may
-              include protections under the GDPR (for residents of the EU/UK) and
-              the CCPA (for residents of California). To exercise any of these
-              rights, contact us at{" "}
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"
-              >
-                {CONTACT_EMAIL}
-              </a>
-              .
-            </p>
-          </Section>
-
-          <Section title="9. Children's privacy">
-            <p>
-              The Service is not intended for children under 16 without the
-              guidance and supervision of a parent, guardian, or qualified coach.
-              We do not knowingly collect personal information from children under
-              16. If you believe a child has provided us information, please
-              contact us so we can take appropriate action.
-            </p>
-          </Section>
-
-          <Section title="10. Health-data disclaimer">
-            <p>
-              {APP_NAME} provides informational guidance only. It is not a medical
-              device and does not provide medical advice, diagnosis, or treatment.
-              Weight cutting carries real health risks. Always consult a qualified
-              physician or health professional before starting any weight-cut,
-              diet, hydration, or training program.
-            </p>
-          </Section>
-
-          <Section title="11. Changes to this policy">
-            <p>
-              We may update this Privacy Policy from time to time. When we make
-              material changes, we will update the "Last updated" date above and,
-              where appropriate, notify you within the app. Continued use of the
-              Service after changes means you accept the updated policy.
-            </p>
-          </Section>
-
-          <Section title="12. Contact us">
-            <p>
-              If you have questions about this Privacy Policy or how we handle
-              your data, reach out at{" "}
+              For privacy-related questions or data requests, email us at{" "}
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
                 className="font-semibold text-accent underline underline-offset-2 hover:text-brand-300"
