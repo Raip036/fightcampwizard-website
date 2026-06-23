@@ -55,10 +55,10 @@ const FAQS: QA[] = [
     q: "What's the difference between Free and Pro?",
     a: (
       <>
-        Free gives you 1 AI coaching use per day plus weight, hydration and
-        meal tracking. Pro unlocks unlimited AI coaching, personalised cut
-        plans, AI photo scanning and fight-week mode with the rehydration
-        protocol.
+        Free gives you weight tracking and projections, meal and macro logging,
+        weigh-in reminders, progress charts and the community. Pro unlocks
+        unlimited AI coaching, personalised cut plans, AI photo scanning and
+        fight-week mode with the rehydration protocol.
       </>
     ),
   },
