@@ -18,10 +18,11 @@ export const CONTACT_EMAIL = "pratikrai@hotmail.co.uk";
 export const WEB3FORMS_ACCESS_KEY: string =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "";
 
-// 🔗 App Store: app is not live yet. When it launches, paste the real URL here
-//    and set APP_IS_LIVE = true — every download button updates automatically.
-export const APP_IS_LIVE = false;
-export const APP_STORE_URL = "#"; // e.g. "https://apps.apple.com/app/id000000000"
+// 🔗 App Store: the iOS app is LIVE. Every download button links here automatically.
+//    To temporarily revert to the pre-launch "Coming soon" state, set APP_IS_LIVE = false.
+export const APP_IS_LIVE = true;
+export const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/fightcampwizard/id6759292393";
 
 // ============================================================================
 // 📸 PHONE SCREENS — drop your screenshots into /public/screens/ with these

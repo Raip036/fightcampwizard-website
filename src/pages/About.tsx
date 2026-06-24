@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { WIZARD, APP_NAME } from "@/lib/constants";
 import Reveal from "@/components/ui/Reveal";
 import AppStoreButton from "@/components/ui/AppStoreButton";
@@ -241,14 +240,11 @@ export default function About() {
               Ready to cut smarter?
             </h2>
             <p className="max-w-md text-base leading-relaxed text-ink-muted text-pretty sm:text-lg">
-              Join the waitlist and be first in line when {APP_NAME} hits the
-              App Store.
+              Download {APP_NAME} free on the App Store and put an AI cornerman
+              in your corner.
             </p>
             <div className="flex flex-col items-center gap-4 sm:flex-row">
-              <Link to="/#waitlist" className="btn-chunky h-14 px-7">
-                Join the Waitlist
-              </Link>
-              <AppStoreButton />
+              <AppStoreButton size="lg" variant="primary" />
             </div>
           </div>
         </Reveal>

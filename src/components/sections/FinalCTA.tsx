@@ -1,6 +1,5 @@
 import { WIZARD } from "@/lib/constants";
 import AppStoreButton from "@/components/ui/AppStoreButton";
-import WaitlistForm from "@/components/ui/WaitlistForm";
 
 export default function FinalCTA() {
   return (
@@ -31,20 +30,15 @@ export default function FinalCTA() {
           <span className="text-accent">smart</span> way?
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-muted text-pretty sm:text-lg">
-          Join the waitlist and be first in line when your AI cornerman lands on
-          the App Store. Cleaner cuts, sharper weigh-ins, more energy on fight
-          night.
+          Download FightCamp Wizard and put an AI cornerman in your pocket.
+          Cleaner cuts, sharper weigh-ins, more energy on fight night.
         </p>
 
-        {/* Waitlist form — this instance owns the #waitlist anchor */}
-        <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-center gap-6">
-          <WaitlistForm variant="dark" anchor />
-          <div className="flex items-center gap-3 text-xs font-medium uppercase tracking-wider text-ink-faint">
-            <span className="h-px w-8 bg-white/15" />
-            or
-            <span className="h-px w-8 bg-white/15" />
-          </div>
-          <AppStoreButton size="lg" />
+        <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-center gap-4">
+          <AppStoreButton size="lg" variant="primary" />
+          <p className="text-xs font-medium text-ink-faint">
+            Free to download · iPhone &amp; iPad
+          </p>
         </div>
       </div>
     </section>

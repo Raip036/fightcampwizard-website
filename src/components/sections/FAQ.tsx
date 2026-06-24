@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { APP_STORE_URL } from "@/lib/constants";
 import Reveal from "@/components/ui/Reveal";
 
 type QA = {
@@ -20,14 +21,19 @@ const FAQS: QA[] = [
     ),
   },
   {
-    q: "When is the app available?",
+    q: "Where can I get the app?",
     a: (
       <>
-        FightCamp Wizard is coming soon to the App Store. Join the{" "}
-        <a href="#waitlist" className="font-bold text-accent underline hover:text-brand-300">
-          waitlist
+        FightCamp Wizard is available now on the{" "}
+        <a
+          href={APP_STORE_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="font-bold text-accent underline hover:text-brand-300"
+        >
+          App Store
         </a>{" "}
-        and we'll ping you the moment it lands so you can be first in the cage.
+        for iPhone and iPad. Download it free and start your cut today.
       </>
     ),
   },

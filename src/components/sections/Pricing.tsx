@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PRICING, WIZARD } from "@/lib/constants";
+import { APP_STORE_URL, PRICING, WIZARD } from "@/lib/constants";
 import Reveal from "@/components/ui/Reveal";
 
 function CheckIcon({ className = "" }: { className?: string }) {
@@ -38,7 +38,9 @@ function FreeCard() {
       <p className="mt-1.5 text-sm text-ink-muted">No card required to start.</p>
 
       <a
-        href="#waitlist"
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noreferrer"
         className="btn-ghost mt-7 h-14 w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-base"
       >
         {plan.cta}
@@ -154,7 +156,9 @@ function ProCard({ yearly }: { yearly: boolean }) {
       </div>
 
       <a
-        href="#waitlist"
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noreferrer"
         className="btn-gold relative z-10 mt-6 h-14 w-full"
       >
         {plan.cta}

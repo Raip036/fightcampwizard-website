@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { APP_NAME, NAV_LINKS, WIZARD } from "@/lib/constants";
+import { APP_NAME, APP_STORE_URL, NAV_LINKS, WIZARD } from "@/lib/constants";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -88,7 +88,12 @@ export default function Navbar() {
         </div>
 
         <div className="hidden shrink-0 items-center gap-3 xl:flex">
-          <a href="/#waitlist" className="btn-chunky !px-5 !py-2.5 !text-sm">
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-chunky !px-5 !py-2.5 !text-sm"
+          >
             Get the App
           </a>
         </div>
@@ -144,7 +149,12 @@ export default function Navbar() {
                   {l.label}
                 </a>
               ))}
-              <a href="/#waitlist" className="btn-chunky mt-2 w-full">
+              <a
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="btn-chunky mt-2 w-full"
+              >
                 Get the App
               </a>
             </div>

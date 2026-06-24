@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { WIZARD } from "@/lib/constants";
-import WaitlistForm from "@/components/ui/WaitlistForm";
 import AppStoreButton from "@/components/ui/AppStoreButton";
 
 // Decorative floating accents scattered around the mascot (dark, glowing dots).
@@ -69,25 +68,20 @@ export default function Hero() {
             you step on the scale dialed in and step in the cage full of fire.
           </motion.p>
 
-          {/* CTA — waitlist is the ONE primary action; App Store is secondary. */}
+          {/* CTA — App Store is the ONE primary action now the app is live. */}
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="mt-8 flex w-full flex-col items-stretch gap-4 sm:items-start"
+            className="mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3"
           >
-            <WaitlistForm anchor className="w-full max-w-md" />
-            <div className="flex w-full items-center gap-3 sm:w-auto">
-              <span className="hidden text-xs font-medium uppercase tracking-[0.18em] text-ink-muted/70 sm:inline">
-                or
-              </span>
-              <AppStoreButton size="md" className="flex-1 sm:w-auto sm:flex-none" />
-              <a
-                href="https://www.instagram.com/fightcampwizard/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Follow FightCamp Wizard on Instagram"
-                className="group inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.04] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-400/60 hover:bg-white/[0.08] hover:text-white"
-              >
+            <AppStoreButton size="lg" variant="primary" className="w-full sm:w-auto" />
+            <a
+              href="https://www.instagram.com/fightcampwizard/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Follow FightCamp Wizard on Instagram"
+              className="group inline-flex h-16 w-16 shrink-0 items-center justify-center self-center rounded-2xl border border-white/15 bg-white/[0.04] text-ink transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-400/60 hover:bg-white/[0.08] hover:text-white sm:self-auto"
+            >
                 <svg
                   viewBox="0 0 24 24"
                   className="h-6 w-6 transition-transform duration-200 group-hover:scale-110"
@@ -103,7 +97,6 @@ export default function Hero() {
                   <circle cx="17.5" cy="6.5" r="1.15" fill="currentColor" stroke="none" />
                 </svg>
               </a>
-            </div>
           </motion.div>
 
           {/* credibility cluster */}
@@ -131,7 +124,7 @@ export default function Hero() {
               <p className="text-left text-sm text-ink-muted">
                 Join{" "}
                 <span className="font-semibold text-ink">fighters worldwide</span>{" "}
-                on the waitlist
+                cutting smarter
               </p>
             </div>
 
@@ -158,7 +151,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mt-3 text-center text-xs text-ink-muted/80 lg:text-left"
           >
-            No spam. Be first when we launch.
+            Free to download · 7-day Pro trial · iPhone &amp; iPad.
           </motion.p>
         </motion.div>
 
