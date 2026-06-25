@@ -419,7 +419,7 @@ export default function Community() {
                 </motion.span>
                 <h3 className="font-display text-lg font-bold uppercase text-ink">Leaderboard</h3>
               </div>
-              <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-gold/15 px-2.5 py-1 text-xs font-semibold text-gold">
+              <span className="mt-2 inline-flex w-fit items-center gap-1 text-xs font-semibold text-gold">
                 Featherweight League
               </span>
 

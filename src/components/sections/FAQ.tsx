@@ -33,7 +33,7 @@ const FAQS: QA[] = [
         >
           App Store
         </a>{" "}
-        for iPhone and iPad. Download it free and start your cut today.
+        for iPhone. Download it free and start your cut today.
       </>
     ),
   },

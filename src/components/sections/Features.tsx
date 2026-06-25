@@ -187,7 +187,7 @@ function WeightCard() {
       <div className="flex items-baseline gap-2">
         <span className="font-display text-xl font-bold tabular-nums text-ink sm:text-2xl">76.4</span>
         <span className="text-xs font-medium text-ink-muted">kg today</span>
-        <span className="ml-auto rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
+        <span className="ml-auto text-[10px] font-semibold text-success">
           -0.4 kg
         </span>
       </div>
@@ -232,7 +232,7 @@ function FightWeekCard() {
     <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Fight week</span>
-        <span className="rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
+        <span className="text-[10px] font-semibold text-accent">
           Day 3 of 6
         </span>
         <span className="ml-auto text-[10px] font-medium text-ink-faint">Auto-guided</span>
@@ -270,7 +270,7 @@ function RehydrateCard() {
     <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Recovery plan</span>
-        <span className="ml-auto rounded-full bg-brand-500/15 px-2 py-0.5 text-[10px] font-semibold text-accent">
+        <span className="ml-auto text-[10px] font-semibold text-accent">
           +2.8 kg regained
         </span>
       </div>
@@ -422,7 +422,7 @@ function SafetyCard() {
     <div className="mt-auto w-full rounded-3xl border border-white/[0.07] bg-surface-2 p-3.5 shadow-card sm:p-4">
       <div className="flex items-center gap-2">
         <span className="font-display text-sm font-bold text-ink">Safe cut zone</span>
-        <span className="ml-auto rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
+        <span className="ml-auto text-[10px] font-semibold text-success">
           Within safe range
         </span>
       </div>
@@ -517,7 +517,7 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
             {/* card header */}
             <div className="flex items-center gap-2">
               <span className="font-display text-sm font-bold text-ink">Your cut plan</span>
-              <span className="rounded-full bg-success/15 px-2 py-0.5 text-[10px] font-semibold text-success">
+              <span className="text-[10px] font-semibold text-success">
                 On track
               </span>
               <span className="ml-auto text-[10px] font-medium text-ink-faint">5 days to weigh-in</span>
@@ -526,10 +526,10 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
             {/* day rows */}
             <div className="mt-2.5 divide-y divide-white/[0.06]">
               {[
-                { day: "Mon", w: "78.4", task: "Water load", tone: "text-accent bg-brand-500/15" },
-                { day: "Tue", w: "77.6", task: "Carb taper", tone: "text-gold bg-gold/10" },
-                { day: "Wed", w: "76.8", task: "Sodium cut", tone: "text-accent bg-brand-500/15" },
-                { day: "Weigh-in", w: "76.0", task: "Make weight", tone: "text-success bg-success/15" },
+                { day: "Mon", w: "78.4", task: "Water load", tone: "text-accent" },
+                { day: "Tue", w: "77.6", task: "Carb taper", tone: "text-gold" },
+                { day: "Wed", w: "76.8", task: "Sodium cut", tone: "text-accent" },
+                { day: "Weigh-in", w: "76.0", task: "Make weight", tone: "text-success" },
               ].map((r) => (
                 <div key={r.day} className="flex items-center gap-2 py-1.5">
                   <span className="w-14 shrink-0 text-[11px] font-semibold text-ink sm:text-xs">{r.day}</span>
@@ -537,7 +537,7 @@ function TileCard({ tile, idx }: { tile: Tile; idx: number }) {
                     {r.w}
                     <span className="text-ink-muted"> kg</span>
                   </span>
-                  <span className={`ml-auto truncate rounded-full px-2 py-0.5 text-[10px] font-semibold ${r.tone}`}>
+                  <span className={`ml-auto truncate text-[10px] font-semibold ${r.tone}`}>
                     {r.task}
                   </span>
                 </div>

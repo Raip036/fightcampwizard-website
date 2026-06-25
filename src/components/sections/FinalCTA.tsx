@@ -37,7 +37,7 @@ export default function FinalCTA() {
         <div className="mx-auto mt-9 flex w-full max-w-md flex-col items-center gap-4">
           <AppStoreButton size="lg" variant="primary" />
           <p className="text-xs font-medium text-ink-faint">
-            Free to download · iPhone &amp; iPad
+            Free to download · iPhone
           </p>
         </div>
       </div>

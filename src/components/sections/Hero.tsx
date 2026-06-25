@@ -72,9 +72,9 @@ export default function Hero() {
           <motion.div
             variants={fadeUp}
             transition={{ duration: 0.6 }}
-            className="mt-8 flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-3"
+            className="mt-8 flex w-full flex-row items-center gap-3"
           >
-            <AppStoreButton size="lg" variant="primary" className="w-full sm:w-auto" />
+            <AppStoreButton size="lg" variant="primary" className="flex-1 sm:w-auto sm:flex-none" />
             <a
               href="https://www.instagram.com/fightcampwizard/"
               target="_blank"
@@ -151,7 +151,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mt-3 text-center text-xs text-ink-muted/80 lg:text-left"
           >
-            Free to download · 7-day Pro trial · iPhone &amp; iPad.
+            Free to download · 7-day Pro trial · iPhone.
           </motion.p>
         </motion.div>
 
