@@ -1,5 +1,6 @@
 import Hero from "@/components/sections/Hero";
-import SocialProof from "@/components/sections/SocialProof";
+// Hidden for now: stats are illustrative, not real. Re-enable with verified figures.
+// import SocialProof from "@/components/sections/SocialProof";
 import MeetWizard from "@/components/sections/MeetWizard";
 import Features from "@/components/sections/Features";
 import HowItWorks from "@/components/sections/HowItWorks";
@@ -16,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <SocialProof />
+      {/* <SocialProof /> hidden until we have verified stats */}
       <MeetWizard />
       <Features />
       <HowItWorks />
