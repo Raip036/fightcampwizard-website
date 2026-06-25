@@ -343,7 +343,7 @@ export default function Coaches() {
               </p>
               <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
-                  href={`mailto:${CONTACT_EMAIL}?subject=FightCamp%20Wizard%20for%20Coaches`}
+                  href="mailto:weightcutwizard@gmail.com?subject=FightCamp%20Wizard%20for%20Coaches"
                   className="btn-chunky w-full sm:w-auto"
                 >
                   Request a demo
